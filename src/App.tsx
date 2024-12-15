@@ -1,13 +1,17 @@
-import { Box } from "@radix-ui/themes";
+import { Container } from "@radix-ui/themes";
 import HomeGrid from "./components/HomeGrid";
 import Navbar from "./components/Navbar";
+import UserRegistration from "./components/registration/UserRegistration";
 
 function App() {
   return (
-    <Box className="bg-zinc-700">
+    <>
       <Navbar />
-      <HomeGrid />
-    </Box>
+      {/* <HomeGrid /> */}
+      <Container>
+        <UserRegistration />
+      </Container>
+    </>
   );
 }
 
