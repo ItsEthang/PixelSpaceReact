@@ -16,7 +16,7 @@ function App() {
       <Navbar />
       {/* <HomeGrid /> */}
       <Container>
-        {/* <UserRegistration /> */}
+        <UserRegistration />
         <UserLogin />
       </Container>
     </>
