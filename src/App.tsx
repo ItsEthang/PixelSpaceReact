@@ -1,7 +1,7 @@
 import { Container } from "@radix-ui/themes";
 import HomeGrid from "./components/HomeGrid";
 import Navbar from "./components/Navbar";
-import UserRegistration from "./components/registration/UserRegistration";
+import UserRegistration from "./components/user/UserRegister";
 
 function App() {
   return (
