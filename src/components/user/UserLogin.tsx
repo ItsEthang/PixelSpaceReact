@@ -5,10 +5,12 @@ import { AuthInput } from "../../interfaces/AuthInput";
 import apiClient from "../../services/api-client";
 import ErrorCallout from "../ErrorCallout";
 import ErrorMessage from "../ErrorMessage";
+import useUserStore from "./store";
 
 const UserLogin = () => {
   const [error, setError] = useState("");
   const [isSubmitting, setSubmitting] = useState(false);
+  const { login } = useUserStore();
   const {
     register,
     handleSubmit,
@@ -17,13 +19,15 @@ const UserLogin = () => {
   const onSubmit: SubmitHandler<AuthInput> = async (data) => {
     try {
       setSubmitting(true);
-      await apiClient.post("/user/login", data);
+      const response = await apiClient.post("/user/login", data);
+      login(response.headers["userid"]);
     } catch (error) {
       setError("Due to an error. You cannot login at this time");
     } finally {
       setSubmitting(false);
     }
   };
+
   return (
     <Flex justify="center" mt="9">
       <Box className="bg-zinc-700 rounded-xl p-8" width="fit-content">
