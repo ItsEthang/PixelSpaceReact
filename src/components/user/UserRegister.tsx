@@ -1,14 +1,11 @@
-import { Box, Button, Callout, Flex, Text, TextField } from "@radix-ui/themes";
-import { useForm, SubmitHandler } from "react-hook-form";
-import ErrorMessage from "../ErrorMessage";
+import { Box, Button, Flex, Text, TextField } from "@radix-ui/themes";
 import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import apiClient from "../../services/api-client";
-import { BsInfoCircle } from "react-icons/bs";
+import ErrorCallout from "../ErrorCallout";
+import ErrorMessage from "../ErrorMessage";
+import { AuthInput } from "../../interfaces/AuthInput";
 
-interface Input {
-  username: string;
-  password: string;
-}
 const UserRegistration = () => {
   const [error, setError] = useState("");
   const [isSubmitting, setSubmitting] = useState(false);
@@ -16,10 +13,9 @@ const UserRegistration = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Input>();
-  const onSubmit: SubmitHandler<Input> = async (data) => {
+  } = useForm<AuthInput>();
+  const onSubmit: SubmitHandler<AuthInput> = async (data) => {
     try {
-      console.log(data);
       setSubmitting(true);
       await apiClient.post("/user", data);
     } catch (error) {
@@ -30,15 +26,8 @@ const UserRegistration = () => {
   };
   return (
     <Flex justify="center" mt="9">
-      <Box className="bg-zinc-700 rounded-xl p-10" width="fit-content">
-        {error && (
-          <Callout.Root color="red" className="mb-5">
-            <Callout.Icon>
-              <BsInfoCircle />
-            </Callout.Icon>
-            <Callout.Text>{error}</Callout.Text>
-          </Callout.Root>
-        )}
+      <Box className="bg-zinc-700 rounded-xl p-8" width="fit-content">
+        {error && <ErrorCallout error={error} />}
         <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
           <Flex align="center" justify="center" direction="column" gap="5">
             <Text className="font-extrabold text-xl">Create New Account</Text>
