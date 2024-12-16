@@ -5,11 +5,11 @@ import PostCard from "./PostCard";
 const AllPost = () => {
   const { data: posts } = useGetPost();
   return (
-    <div className="col-span-4 lg:col-span-3">
-      <Heading as="h2" className="m-4">
+    <div className="col-span-4 lg:col-span-3 m-4">
+      <Heading as="h2" className="mb-4">
         Posts of the Day
       </Heading>
-      <Flex direction="column" justify="center" align="center" gap="4">
+      <Flex direction="column" justify="center" align="start" gap="4">
         {posts?.map((post) => (
           <PostCard post={post} />
         ))}

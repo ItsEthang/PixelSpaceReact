@@ -4,3 +4,9 @@ export interface Post {
   content: string;
   timeCreated: number;
 }
+
+export interface UserInfo {
+  username: string;
+  name: string;
+  profileImg: string;
+}
