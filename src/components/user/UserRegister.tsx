@@ -1,6 +1,6 @@
 import { Box, Button, Callout, Flex, Text, TextField } from "@radix-ui/themes";
 import { useForm, SubmitHandler } from "react-hook-form";
-import ErrorMessage from "./ErrorMessage";
+import ErrorMessage from "../ErrorMessage";
 import { useState } from "react";
 import apiClient from "../../services/api-client";
 import { BsInfoCircle } from "react-icons/bs";
