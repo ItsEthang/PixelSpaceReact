@@ -14,10 +14,11 @@ function App() {
   return (
     <>
       <Navbar />
-      {/* <HomeGrid /> */}
+
       <Container>
-        <UserRegistration />
-        <UserLogin />
+        {/* <UserRegistration />
+        <UserLogin /> */}
+        <HomeGrid />
       </Container>
     </>
   );

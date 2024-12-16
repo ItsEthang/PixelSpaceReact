@@ -1,11 +1,11 @@
-import { Box, Grid } from "@radix-ui/themes";
+import AllPost from "./post/AllPost";
 
 const HomeGrid = () => {
   return (
-    <Grid columns={{ initial: "1", md: "2" }}>
-      <div className="hidden lg:flex">Aside</div>
-      <Box>Main</Box>
-    </Grid>
+    <div className="grid grid-cols-4 gap-4">
+      <div className="hidden col-span-1 lg:flex ">Aside</div>
+      <AllPost />
+    </div>
   );
 };
 
