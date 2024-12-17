@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import apiClient from "../services/api-client";
 import { Post } from "../interfaces/Entity";
+import ms from "ms";
 
 const useGetPost = () => {
   const getPost = async () => {
@@ -10,6 +11,7 @@ const useGetPost = () => {
   return useQuery({
     queryKey: ["posts"],
     queryFn: getPost,
+    staleTime: ms("1m"),
   });
 };
 

@@ -1,4 +1,4 @@
-import { Flex, Separator, Text } from "@radix-ui/themes";
+import { Flex, Separator } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
 import LinkText from "../LinkText";
 

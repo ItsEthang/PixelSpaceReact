@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import apiClient from "../services/api-client";
 import { UserProfile } from "../interfaces/Entity";
+import ms from "ms";
 
 const useGetLoggedInUser = (userId: string) => {
   const getLoggedInUser = async () => {
@@ -14,6 +15,7 @@ const useGetLoggedInUser = (userId: string) => {
   return useQuery({
     queryKey: ["logged-in-user"],
     queryFn: getLoggedInUser,
+    staleTime: ms("5m"),
   });
 };
 
