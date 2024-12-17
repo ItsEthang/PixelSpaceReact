@@ -10,3 +10,10 @@ export interface UserInfo {
   name: string;
   profileImg: string;
 }
+
+export interface UserProfile {
+  username: string;
+  name: string;
+  profileImg: string;
+  bio: string;
+}
