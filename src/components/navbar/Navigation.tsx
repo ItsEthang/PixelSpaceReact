@@ -1,15 +1,17 @@
 import { Flex, Separator } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
 import LinkText from "../LinkText";
+import useUserStore from "../user/store";
 
 const Navigation = () => {
+  const { userId } = useUserStore();
   return (
     <Flex gap="3" align="center">
       <Link to="/">
         <LinkText>My Posts</LinkText>
       </Link>
       <Separator orientation="vertical" />
-      <Link to="/">
+      <Link to={`/profile/${userId}`}>
         <LinkText>Profile</LinkText>
       </Link>
       <Separator orientation="vertical" />

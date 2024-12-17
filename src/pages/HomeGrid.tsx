@@ -1,4 +1,3 @@
-import { Separator } from "@radix-ui/themes";
 import FollowingList from "../components/FollowingList";
 import AllPost from "../components/post/AllPost";
 import useUserStore from "../components/user/store";

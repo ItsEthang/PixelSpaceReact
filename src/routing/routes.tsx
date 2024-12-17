@@ -4,6 +4,7 @@ import ErrorPage from "../pages/ErrorPage";
 import HomeGrid from "../pages/HomeGrid";
 import UserLogin from "../pages/user/UserLogin";
 import UserRegistration from "../pages/user/UserRegister";
+import ProfilePage from "../pages/ProfilePage";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
       { path: "", element: <HomeGrid /> },
       { path: "login", element: <UserLogin /> },
       { path: "register", element: <UserRegistration /> },
+      { path: "profile/:requestId", element: <ProfilePage /> },
     ],
   },
 ]);
