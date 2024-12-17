@@ -1,21 +1,20 @@
-import { Avatar, Flex, Text } from "@radix-ui/themes";
-import logo from "../../assets/pixel-space-icon.webp";
-import { Link } from "react-router-dom";
+import { Flex } from "@radix-ui/themes";
 import useUserStore from "../user/store";
-import Logout from "./Logout";
 import Login from "./Login";
+import Logo from "./Logo";
+import Logout from "./Logout";
+import Navigation from "./Navigation";
 
 const Navbar = () => {
   const { isLoggedIn, logout } = useUserStore();
+
   return (
     <nav className="border-b-2 mb-5 py-4 px-8 bg-zinc-800">
       <Flex justify="between" align="center">
-        <Link to="/">
-          <Flex align="center">
-            <Avatar src={logo} fallback="PS" className="mr-2" />
-            <Text className="font-bold text-lg">Pixel Space</Text>
-          </Flex>
-        </Link>
+        <Flex gap="5">
+          <Logo />
+          {isLoggedIn && <Navigation />}
+        </Flex>
         {isLoggedIn ? <Logout logout={logout} /> : <Login />}
       </Flex>
     </nav>

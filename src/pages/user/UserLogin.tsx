@@ -1,20 +1,20 @@
 import { Box, Button, Flex, Text, TextField } from "@radix-ui/themes";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { AuthInput } from "../../interfaces/AuthInput";
-import InputBox from "../../components/InputBox";
-import apiClient from "../../services/api-client";
+import { Link, useNavigate } from "react-router-dom";
 import ErrorCallout from "../../components/ErrorCallout";
 import ErrorMessage from "../../components/ErrorMessage";
+import InputBox from "../../components/InputBox";
 import useUserStore from "../../components/user/store";
-import { Link, useNavigate } from "react-router-dom";
-import { UserProfile } from "../../interfaces/Entity";
+import { AuthInput } from "../../interfaces/AuthInput";
+import apiClient from "../../services/api-client";
+import LinkText from "../../components/LinkText";
 
 const UserLogin = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [isSubmitting, setSubmitting] = useState(false);
-  const { userId, login, setUserProfile } = useUserStore();
+  const { login } = useUserStore();
   const {
     register,
     handleSubmit,
@@ -25,12 +25,6 @@ const UserLogin = () => {
       setSubmitting(true);
       const response = await apiClient.post("/user/login", data);
       login(response.headers["userid"]);
-      const loggedInUser: UserProfile = await apiClient.get("/user", {
-        headers: {
-          userId: userId,
-        },
-      });
-      setUserProfile(loggedInUser);
       navigate("/");
     } catch (error) {
       setError("Due to an error. You cannot login at this time");
@@ -70,11 +64,8 @@ const UserLogin = () => {
               ></TextField.Root>
               <ErrorMessage>{errors.password?.message}</ErrorMessage>
             </InputBox>
-            <Link
-              to="/register"
-              className="underline-offset-3 text-fuchsia-400 hover:underline hover:text-white"
-            >
-              No account? Click here!
+            <Link to="/register">
+              <LinkText>No account? Click here!</LinkText>
             </Link>
             <Button
               size="3"
