@@ -7,7 +7,7 @@ const AllPost = () => {
   if (error)
     return <Heading>Sorry, there is an error fetching the posts</Heading>;
   return (
-    <div className="col-span-4 lg:col-span-3 m-4">
+    <div className="col-span-5 lg:col-span-4 m-4">
       <Heading as="h2" className="mb-4">
         Posts of the Day
       </Heading>

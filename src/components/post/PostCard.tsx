@@ -8,7 +8,7 @@ const PostCard = ({ post }: { post: Post }) => {
   const profileImg = user?.profileImg ? user.profileImg : placeholder;
   const fallback = user?.name ? user.name.charAt(0) : "X";
   return (
-    <Card className="w-3/4">
+    <Card className="w-4/5">
       <Flex gap="3" align="center" className="mb-2">
         <Avatar size="3" src={profileImg} radius="full" fallback={fallback} />
         <Box>
