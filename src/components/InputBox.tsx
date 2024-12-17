@@ -3,7 +3,7 @@ import React from "react";
 
 const InputBox = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Box maxWidth="800px" width={{ initial: "200px", sm: "600px" }}>
+    <Box width={{ initial: "200px", sm: "300px" }} m="2">
       {children}
     </Box>
   );

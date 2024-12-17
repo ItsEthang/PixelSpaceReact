@@ -7,9 +7,10 @@ import apiClient from "../../services/api-client";
 import ErrorCallout from "../../components/ErrorCallout";
 import ErrorMessage from "../../components/ErrorMessage";
 import useUserStore from "../../components/user/store";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const UserLogin = () => {
+  const navigate = useNavigate();
   const [error, setError] = useState("");
   const [isSubmitting, setSubmitting] = useState(false);
   const { login } = useUserStore();
@@ -23,6 +24,7 @@ const UserLogin = () => {
       setSubmitting(true);
       const response = await apiClient.post("/user/login", data);
       login(response.headers["userid"]);
+      navigate("/");
     } catch (error) {
       setError("Due to an error. You cannot login at this time");
     } finally {
@@ -68,7 +70,7 @@ const UserLogin = () => {
               No account? Click here!
             </Link>
             <Button
-              size="2"
+              size="3"
               type="submit"
               loading={isSubmitting}
               variant="soft"
