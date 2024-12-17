@@ -23,6 +23,7 @@ const useUserStore = create<UserStore>((set) => ({
     set(() => ({
       userId: null,
       isLoggedIn: false,
+      userProfile: null,
     })),
   setUserProfile: (userInput) =>
     set(() => ({

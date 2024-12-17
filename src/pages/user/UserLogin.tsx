@@ -8,12 +8,13 @@ import ErrorCallout from "../../components/ErrorCallout";
 import ErrorMessage from "../../components/ErrorMessage";
 import useUserStore from "../../components/user/store";
 import { Link, useNavigate } from "react-router-dom";
+import { UserProfile } from "../../interfaces/Entity";
 
 const UserLogin = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [isSubmitting, setSubmitting] = useState(false);
-  const { login } = useUserStore();
+  const { userId, login, setUserProfile } = useUserStore();
   const {
     register,
     handleSubmit,
@@ -24,6 +25,12 @@ const UserLogin = () => {
       setSubmitting(true);
       const response = await apiClient.post("/user/login", data);
       login(response.headers["userid"]);
+      const loggedInUser: UserProfile = await apiClient.get("/user", {
+        headers: {
+          userId: userId,
+        },
+      });
+      setUserProfile(loggedInUser);
       navigate("/");
     } catch (error) {
       setError("Due to an error. You cannot login at this time");
