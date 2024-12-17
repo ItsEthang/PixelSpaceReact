@@ -1,14 +1,16 @@
 import { Box, Button, Flex, Text, TextField } from "@radix-ui/themes";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import apiClient from "../../services/api-client";
-import ErrorCallout from "../ErrorCallout";
-import ErrorMessage from "../ErrorMessage";
 import { AuthInput } from "../../interfaces/AuthInput";
+import apiClient from "../../services/api-client";
+import ErrorCallout from "../../components/ErrorCallout";
+import ErrorMessage from "../../components/ErrorMessage";
+import useUserStore from "../../components/user/store";
 
-const UserRegistration = () => {
+const UserLogin = () => {
   const [error, setError] = useState("");
   const [isSubmitting, setSubmitting] = useState(false);
+  const { login } = useUserStore();
   const {
     register,
     handleSubmit,
@@ -17,20 +19,24 @@ const UserRegistration = () => {
   const onSubmit: SubmitHandler<AuthInput> = async (data) => {
     try {
       setSubmitting(true);
-      await apiClient.post("/user", data);
+      const response = await apiClient.post("/user/login", data);
+      login(response.headers["userid"]);
     } catch (error) {
-      setError("Due to an error. Your registration failed to complete.");
+      setError("Due to an error. You cannot login at this time");
     } finally {
       setSubmitting(false);
     }
   };
+
   return (
     <Flex justify="center" mt="9">
       <Box className="bg-zinc-700 rounded-xl p-8" width="fit-content">
         {error && <ErrorCallout error={error} />}
         <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
           <Flex align="center" justify="center" direction="column" gap="5">
-            <Text className="font-extrabold text-xl">Create New Account</Text>
+            <Text className="font-extrabold text-xl">
+              Login to Your Account
+            </Text>
             <Box maxWidth="800px" width={{ initial: "200px", sm: "600px" }}>
               <TextField.Root
                 defaultValue=""
@@ -49,7 +55,7 @@ const UserRegistration = () => {
               <ErrorMessage>{errors.password?.message}</ErrorMessage>
             </Box>
             <Button size="2" type="submit" loading={isSubmitting}>
-              Register
+              Login
             </Button>
           </Flex>
         </form>
@@ -58,4 +64,4 @@ const UserRegistration = () => {
   );
 };
 
-export default UserRegistration;
+export default UserLogin;

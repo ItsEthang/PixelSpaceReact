@@ -1,4 +1,4 @@
-import AllPost from "./post/AllPost";
+import AllPost from "../components/post/AllPost";
 
 const HomeGrid = () => {
   return (

@@ -1,8 +1,8 @@
 import { Container } from "@radix-ui/themes";
-import HomeGrid from "./components/HomeGrid";
+import HomeGrid from "./pages/HomeGrid";
 import Navbar from "./components/Navbar";
-import UserRegistration from "./components/user/UserRegister";
-import UserLogin from "./components/user/UserLogin";
+import UserRegistration from "./pages/user/UserRegister";
+import UserLogin from "./pages/user/UserLogin";
 import axios from "axios";
 
 axios.interceptors.response.use((response) => {
