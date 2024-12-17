@@ -8,9 +8,10 @@ const useGetPost = () => {
     const res = await apiClient.get<Post[]>("/post");
     return res.data;
   };
-  return useQuery({
+  return useQuery<Post[], Error>({
     queryKey: ["posts"],
     queryFn: getPost,
+    retry: 3,
     staleTime: ms("1m"),
   });
 };

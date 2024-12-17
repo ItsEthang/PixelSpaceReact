@@ -15,6 +15,7 @@ const useGetLoggedInUser = (userId: string) => {
   return useQuery({
     queryKey: ["logged-in-user"],
     queryFn: getLoggedInUser,
+    retry: 2,
     staleTime: ms("5m"),
   });
 };
