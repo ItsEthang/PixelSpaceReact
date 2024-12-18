@@ -40,7 +40,7 @@ const ProfilePage = () => {
           </Text>
         </Box>
         <Text
-          className="max-h-96 overflow-scroll border-double border-2 border-white p-5"
+          className="max-h-96 w-full overflow-scroll border-double border-2 border-white p-5"
           as="p"
         >
           {profile?.bio}

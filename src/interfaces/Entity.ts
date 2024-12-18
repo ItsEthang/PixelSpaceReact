@@ -6,6 +6,7 @@ export interface Post {
 }
 
 export interface UserInfo {
+  userId: number;
   username: string;
   name: string;
   profileImg: string;
