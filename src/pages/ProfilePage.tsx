@@ -33,7 +33,7 @@ const ProfilePage = () => {
             <Heading as="h2" size="8">
               {profile?.name}
             </Heading>
-            <EditProfileBtn />
+            <EditProfileBtn userId={params.requestId!} />
           </Flex>
           <Text as="div" color="gray" weight="light" size="1">
             @{profile?.username}

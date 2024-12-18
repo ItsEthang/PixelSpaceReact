@@ -1,10 +1,13 @@
 import { Button } from "@radix-ui/themes";
+import { Link } from "react-router-dom";
 
-const EditProfileBtn = () => {
+const EditProfileBtn = ({ userId }: { userId: string }) => {
   return (
-    <Button variant="ghost" color="yellow">
-      Edit Profile
-    </Button>
+    <Link to={`/profile/${userId}/edit`}>
+      <Button variant="ghost" color="yellow">
+        Edit Profile
+      </Button>
+    </Link>
   );
 };
 
