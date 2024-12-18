@@ -1,8 +1,8 @@
 import { Flex } from "@radix-ui/themes";
 import useUserStore from "../user/store";
-import Login from "./Login";
+import Login from "../buttons/Login";
 import Logo from "./Logo";
-import Logout from "./Logout";
+import Logout from "../buttons/Logout";
 import Navigation from "./Navigation";
 
 const Navbar = () => {

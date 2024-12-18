@@ -1,16 +1,8 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  Card,
-  Container,
-  Flex,
-  Heading,
-  Text,
-} from "@radix-ui/themes";
+import { Avatar, Box, Container, Flex, Heading, Text } from "@radix-ui/themes";
 import useGetUserById from "../hooks/useGetUserById";
 import { useParams } from "react-router-dom";
-import FollowButtons from "../components/FollowButtons";
+import FollowButtons from "../components/buttons/FollowButtons";
+import EditProfileBtn from "../components/buttons/EditProfileBtn";
 
 const ProfilePage = () => {
   const params = useParams();
@@ -41,9 +33,7 @@ const ProfilePage = () => {
             <Heading as="h2" size="8">
               {profile?.name}
             </Heading>
-            <Button variant="ghost" color="yellow">
-              Edit Profile
-            </Button>
+            <EditProfileBtn />
           </Flex>
           <Text as="div" color="gray" weight="light" size="1">
             @{profile?.username}
