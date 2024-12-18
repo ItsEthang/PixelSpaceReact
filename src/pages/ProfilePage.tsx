@@ -1,4 +1,13 @@
-import { Avatar, Box, Card, Flex, Heading, Text } from "@radix-ui/themes";
+import {
+  Avatar,
+  Box,
+  Button,
+  Card,
+  Container,
+  Flex,
+  Heading,
+  Text,
+} from "@radix-ui/themes";
 import useGetUserById from "../hooks/useGetUserById";
 import { useParams } from "react-router-dom";
 import FollowButtons from "../components/FollowButtons";
@@ -18,26 +27,33 @@ const ProfilePage = () => {
     );
   }
   return (
-    <Flex direction="column" align="center" gap="5">
-      <Avatar
-        size="8"
-        src={profile?.profileImg}
-        fallback={profile?.name?.charAt(0) || "X"}
-        radius="full"
-      />
-      <FollowButtons />
-      <Box>
-        <Heading as="h2" size="8">
-          {profile?.name}
-        </Heading>
-        <Text as="div" color="gray" weight="light" size="1">
-          @{profile?.username}
-        </Text>
-      </Box>
-      <Box>
-        <Text as="p">{profile?.bio}</Text>
-      </Box>
-    </Flex>
+    <Container>
+      <Flex direction="column" align="center" gap="5">
+        <Avatar
+          size="8"
+          src={profile?.profileImg}
+          fallback={profile?.name?.charAt(0) || "X"}
+          radius="full"
+        />
+        <FollowButtons />
+        <Box>
+          <Flex align="center" gap="5">
+            <Heading as="h2" size="8">
+              {profile?.name}
+            </Heading>
+            <Button variant="ghost" color="yellow">
+              Edit Profile
+            </Button>
+          </Flex>
+          <Text as="div" color="gray" weight="light" size="1">
+            @{profile?.username}
+          </Text>
+        </Box>
+        <Box>
+          <Text as="p">{profile?.bio}</Text>
+        </Box>
+      </Flex>
+    </Container>
   );
 };
 

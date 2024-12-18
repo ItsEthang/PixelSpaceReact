@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Logout = ({ logout }: { logout: () => void }) => {
   return (
     <Link to="/">
-      <Button onClick={logout}>
+      <Button onClick={logout} variant="surface">
         <Text weight="bold">Logout</Text>
       </Button>
     </Link>
