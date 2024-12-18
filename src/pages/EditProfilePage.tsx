@@ -1,18 +1,19 @@
 import { Box, Button, Flex, Text, TextField } from "@radix-ui/themes";
+import "easymde/dist/easymde.min.css";
 import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import SimpleMDE from "react-simplemde-editor";
 import ErrorCallout from "../components/ErrorCallout";
 import ErrorMessage from "../components/ErrorMessage";
-import InputBox from "../components/InputBox";
 import { ProfileInput } from "../interfaces/ProfileInput";
 import apiClient from "../services/api-client";
-import "easymde/dist/easymde.min.css";
+import useGetUserById from "../hooks/useGetUserById";
 
 const EditProfilePage = () => {
   const params = useParams();
   const userId = params.requestId!;
+  const { data: profile } = useGetUserById(userId);
   const nagivate = useNavigate();
   const [error, setError] = useState("");
   const [isSubmitting, setSubmitting] = useState(false);
@@ -50,12 +51,13 @@ const EditProfilePage = () => {
           <Flex align="center" justify="center" direction="column" gap="5">
             <Text className="font-extrabold text-xl">Update Your Profile</Text>
 
-            <div>
+            <Box>
               <Box>
                 <Text as="label">Display Name</Text>
 
                 <TextField.Root
                   placeholder="Enter your new name"
+                  defaultValue={profile?.name}
                   {...register("name")}
                 ></TextField.Root>
                 <ErrorMessage>{errors.name?.message}</ErrorMessage>
@@ -64,6 +66,7 @@ const EditProfilePage = () => {
                 <Text as="label">Profile Image URL</Text>
                 <TextField.Root
                   placeholder="Enter profile image url"
+                  defaultValue={profile?.profileImg}
                   {...register("profileImg")}
                 ></TextField.Root>
                 <ErrorMessage>{errors.profileImg?.message}</ErrorMessage>
@@ -81,12 +84,13 @@ const EditProfilePage = () => {
                 <Text as="label">Bio</Text>
                 <Controller
                   name="bio"
+                  defaultValue={profile?.bio}
                   control={control}
                   render={({ field }) => <SimpleMDE {...field} />}
                 />
                 <ErrorMessage>{errors.bio?.message}</ErrorMessage>
               </Box>
-            </div>
+            </Box>
 
             <Button
               size="3"
