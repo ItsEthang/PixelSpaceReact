@@ -3,9 +3,11 @@ import useGetUserById from "../hooks/useGetUserById";
 import { useParams } from "react-router-dom";
 import FollowButtons from "../components/buttons/FollowButtons";
 import EditProfileBtn from "../components/buttons/EditProfileBtn";
+import useUserStore from "../components/user/store";
 
 const ProfilePage = () => {
   const params = useParams();
+  const { isLoggedIn, userId: loggedUserId } = useUserStore();
   const { data: profile, error } = useGetUserById(params.requestId!);
 
   if (error) {
@@ -33,7 +35,9 @@ const ProfilePage = () => {
             <Heading as="h2" size="8">
               {profile?.name}
             </Heading>
-            <EditProfileBtn userId={params.requestId!} />
+            {isLoggedIn && loggedUserId + "" === params.requestId && (
+              <EditProfileBtn userId={params.requestId!} />
+            )}
           </Flex>
           <Text as="div" color="gray" weight="light" size="1">
             @{profile?.username}
