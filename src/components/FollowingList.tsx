@@ -16,6 +16,7 @@ const FollowingList = () => {
           Your Following
         </Heading>
         <Separator orientation="horizontal" size="4" />
+
         <ul className="list-none ">
           {followings?.map((following) => (
             <FollowingCard following={following} />

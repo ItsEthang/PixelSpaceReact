@@ -3,8 +3,11 @@ import { Post } from "../../interfaces/Entity";
 import usePostGetUser from "../../hooks/usePostGetUser";
 import placeholder from "../../assets/placeholder-profile.webp";
 import { Link } from "react-router-dom";
+import useUserStore from "../user/store";
+import FollowBtn from "../buttons/FollowBtn";
 
 const PostCard = ({ post }: { post: Post }) => {
+  const { isLoggedIn, userId } = useUserStore();
   const { data: user } = usePostGetUser(post.postId);
   const profileImg = user?.profileImg ? user.profileImg : placeholder;
   const fallback = user?.name ? user.name.charAt(0) : "X";
@@ -21,6 +24,7 @@ const PostCard = ({ post }: { post: Post }) => {
               @{user?.username}
             </Text>
           </Box>
+          {isLoggedIn && <FollowBtn user1Id={userId} user2Id={user?.userId} />}
         </Flex>
       </Link>
       <Flex direction="column" gap="3">

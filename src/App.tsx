@@ -1,9 +1,7 @@
 import { Container } from "@radix-ui/themes";
-import HomeGrid from "./pages/HomeGrid";
-import Navbar from "./components/navbar/Navbar";
-import UserRegistration from "./pages/user/UserRegister";
-import UserLogin from "./pages/user/UserLogin";
 import axios from "axios";
+import Navbar from "./components/navbar/Navbar";
+import HomeGrid from "./pages/HomeGrid";
 
 axios.interceptors.response.use((response) => {
   console.log(response);
@@ -16,8 +14,6 @@ function App() {
       <Navbar />
 
       <Container>
-        {/* <UserRegistration />
-        <UserLogin /> */}
         <HomeGrid />
       </Container>
     </>

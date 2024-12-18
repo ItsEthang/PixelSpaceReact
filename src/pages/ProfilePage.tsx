@@ -21,7 +21,7 @@ const ProfilePage = () => {
     );
   }
   return (
-    <Container>
+    <Container mt="8">
       <Flex direction="column" align="center" gap="5">
         <Avatar
           size="8"
