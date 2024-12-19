@@ -19,7 +19,7 @@ const FollowingList = () => {
 
         <ul className="list-none ">
           {followings?.map((following) => (
-            <FollowingCard following={following} />
+            <FollowingCard following={following} key={following.username} />
           ))}
         </ul>
       </Flex>
