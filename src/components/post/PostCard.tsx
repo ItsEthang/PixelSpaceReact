@@ -13,20 +13,28 @@ const PostCard = ({ post }: { post: Post }) => {
   const fallback = user?.name ? user.name.charAt(0) : "X";
   return (
     <Card className="w-4/5">
-      <Link to={`/profile/${user?.userId}`}>
-        <Flex gap="3" align="center" className="mb-2">
-          <Avatar size="3" src={profileImg} radius="full" fallback={fallback} />
-          <Box>
-            <Text as="div" size="2" weight="bold">
-              {user?.name}
-            </Text>
-            <Text as="div" size="1" color="gray">
-              @{user?.username}
-            </Text>
-          </Box>
-          {isLoggedIn && <FollowBtn user1Id={userId} user2Id={user?.userId} />}
-        </Flex>
-      </Link>
+      <Flex gap="3" align="center" className="mb-2">
+        <Link to={`/profile/${user?.userId}`}>
+          <Flex gap="3" align="center" className="mb-2">
+            <Avatar
+              size="3"
+              src={profileImg}
+              radius="full"
+              fallback={fallback}
+            />
+            <Box>
+              <Text as="div" size="2" weight="bold">
+                {user?.name}
+              </Text>
+              <Text as="div" size="1" color="gray">
+                @{user?.username}
+              </Text>
+            </Box>
+          </Flex>
+        </Link>
+        {isLoggedIn && <FollowBtn user1Id={userId} user2Id={user?.userId} />}
+      </Flex>
+
       <Flex direction="column" gap="3">
         <Box>
           <Text as="div" size="4" weight="bold">
