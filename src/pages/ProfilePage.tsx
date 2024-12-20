@@ -10,6 +10,16 @@ const ProfilePage = () => {
   const { isLoggedIn, userId: loggedUserId } = useUserStore();
   const { data: profile, error } = useGetUserById(params.requestId!);
 
+  if (!isLoggedIn) {
+    return (
+      <Container>
+        <Heading as="h2" size="8">
+          Please login to see your profile
+        </Heading>
+      </Container>
+    );
+  }
+
   if (error) {
     return (
       <>
