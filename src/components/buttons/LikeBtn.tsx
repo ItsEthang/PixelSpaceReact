@@ -5,15 +5,19 @@ import { BiSolidLike } from "react-icons/bi";
 
 interface Props {
   giveLike: () => void;
+  giveUnlike: () => void;
 }
 
-const LikeBtn = ({ giveLike }: Props) => {
+const LikeBtn = ({ giveLike, giveUnlike }: Props) => {
   const [liked, setLiked] = useState(false);
   const handleClick = () => {
     if (!liked) {
       giveLike();
+      setLiked(!liked);
+    } else {
+      giveUnlike();
+      setLiked(!liked);
     }
-    setLiked(!liked);
   };
   return (
     <Button onClick={handleClick} variant="ghost" size="4">
