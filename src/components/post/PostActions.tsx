@@ -1,8 +1,8 @@
 import { Flex } from "@radix-ui/themes";
-import CommentBtn from "../buttons/CommentBtn";
-import LikeBtn from "../buttons/LikeBtn";
 import useGiveLike from "../../hooks/useGiveLike";
 import useGiveUnlike from "../../hooks/useGiveUnlike";
+import CommentBtn from "../buttons/CommentBtn";
+import LikeBtn from "../buttons/LikeBtn";
 
 interface Props {
   postId: number;
@@ -18,7 +18,13 @@ const PostActions = ({ postId, userId }: Props) => {
   };
   return (
     <Flex justify="end" align="center" gap="7">
-      <LikeBtn giveLike={handleLikeClick} giveUnlike={handleUnlikeClick} />
+      <LikeBtn
+        giveLike={handleLikeClick}
+        giveUnlike={handleUnlikeClick}
+        postId={postId + ""}
+        userId={userId}
+      />
+
       <CommentBtn />
     </Flex>
   );

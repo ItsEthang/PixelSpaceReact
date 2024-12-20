@@ -1,15 +1,25 @@
 import { Button } from "@radix-ui/themes";
 import { useState } from "react";
-import { BiLike } from "react-icons/bi";
-import { BiSolidLike } from "react-icons/bi";
+import { BiLike, BiSolidLike } from "react-icons/bi";
+import useGetLikeByUserAndPost from "../../hooks/useGetLikeByUserAndPost";
 
 interface Props {
   giveLike: () => void;
   giveUnlike: () => void;
+  postId: string;
+  userId: string;
 }
 
-const LikeBtn = ({ giveLike, giveUnlike }: Props) => {
-  const [liked, setLiked] = useState(false);
+const LikeBtn = ({ giveLike, giveUnlike, postId, userId }: Props) => {
+  const { data: isLikedByLogIn, error: likeError } = useGetLikeByUserAndPost(
+    postId,
+    userId
+  );
+  if (likeError || isLikedByLogIn === undefined) {
+    return null;
+  }
+  const [liked, setLiked] = useState(isLikedByLogIn);
+
   const handleClick = () => {
     if (!liked) {
       giveLike();

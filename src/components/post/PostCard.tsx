@@ -1,14 +1,15 @@
 import { Box, Card } from "@radix-ui/themes";
 import usePostGetUser from "../../hooks/usePostGetUser";
 import { Post } from "../../interfaces/Entity";
+import useUserStore from "../user/store";
 import PostActions from "./PostActions";
 import PostContent from "./PostContent";
 import PostUser from "./PostUser";
-import useUserStore from "../user/store";
 
 const PostCard = ({ post }: { post: Post }) => {
   const { isLoggedIn, userId } = useUserStore();
   const { data: user, error } = usePostGetUser(post.postId);
+
   if (!user || error) {
     return null;
   }
