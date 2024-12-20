@@ -17,7 +17,9 @@ const PostCard = ({ post }: { post: Post }) => {
       <Box px="3" py="1">
         <PostUser user={user} />
         <PostContent post={post} />
-        {isLoggedIn && <PostActions />}
+        {isLoggedIn && (
+          <PostActions postId={post.postId} userId={user.userId + ""} />
+        )}
       </Box>
     </Card>
   );
