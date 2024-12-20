@@ -1,7 +1,7 @@
 import { Flex, Heading, Separator } from "@radix-ui/themes";
-import useGetFollowing from "../hooks/useGetFollowing";
+import useGetFollowing from "../../hooks/useGetFollowing";
 import FollowingCard from "./FollowingCard";
-import useUserStore from "./user/store";
+import useUserStore from "../user/store";
 
 const FollowingList = () => {
   const { userId } = useUserStore();

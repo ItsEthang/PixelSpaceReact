@@ -1,5 +1,5 @@
 import { Avatar, Card, Flex, Text } from "@radix-ui/themes";
-import { UserInfo } from "../interfaces/Entity";
+import { UserInfo } from "../../interfaces/Entity";
 
 const FollowingCard = ({ following }: { following: UserInfo }) => {
   return (

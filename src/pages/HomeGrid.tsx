@@ -1,4 +1,4 @@
-import FollowingList from "../components/FollowingList";
+import FollowingList from "../components/follow/FollowingList";
 import AllPost from "../components/post/AllPost";
 import useUserStore from "../components/user/store";
 

@@ -13,7 +13,7 @@ const FollowBtn = ({ user1Id, user2Id }: Props) => {
     return null;
   }
 
-  const { data: followings, error } = useGetFollowing(user1Id);
+  const { data: followings, error, refetch } = useGetFollowing(user1Id);
   const [isFollowing, setIsFollowing] = useState<boolean>();
 
   if (error) {
@@ -26,7 +26,7 @@ const FollowBtn = ({ user1Id, user2Id }: Props) => {
         followings.some((following) => following.userId === user2Id)
       );
     }
-  }, [user1Id, followings]);
+  }, []);
 
   const handleClick = () => {
     if (!isFollowing) {
@@ -57,7 +57,9 @@ const FollowBtn = ({ user1Id, user2Id }: Props) => {
           console.log(error);
         });
     }
+
     setIsFollowing(!isFollowing);
+    refetch();
   };
 
   return (

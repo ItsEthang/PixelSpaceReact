@@ -4,8 +4,10 @@ import { Post } from "../../interfaces/Entity";
 import PostActions from "./PostActions";
 import PostContent from "./PostContent";
 import PostUser from "./PostUser";
+import useUserStore from "../user/store";
 
 const PostCard = ({ post }: { post: Post }) => {
+  const { isLoggedIn } = useUserStore();
   const { data: user, error } = usePostGetUser(post.postId);
   if (!user || error) {
     return null;
@@ -15,7 +17,7 @@ const PostCard = ({ post }: { post: Post }) => {
       <Box px="3" py="1">
         <PostUser user={user} />
         <PostContent post={post} />
-        <PostActions />
+        {isLoggedIn && <PostActions />}
       </Box>
     </Card>
   );
