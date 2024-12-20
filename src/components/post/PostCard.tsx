@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import useUserStore from "../user/store";
 import FollowBtn from "../buttons/FollowBtn";
 import CommentBtn from "../buttons/CommentBtn";
+import LikeBtn from "../buttons/LikeBtn";
 
 const PostCard = ({ post }: { post: Post }) => {
   const { isLoggedIn, userId } = useUserStore();
@@ -45,7 +46,8 @@ const PostCard = ({ post }: { post: Post }) => {
             {post.content}
           </Text>
         </Box>
-        <Flex justify="end">
+        <Flex justify="end" align="center" gap="7">
+          <LikeBtn />
           <CommentBtn />
         </Flex>
       </Box>
