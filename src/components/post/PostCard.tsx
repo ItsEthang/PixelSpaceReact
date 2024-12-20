@@ -7,7 +7,7 @@ import PostUser from "./PostUser";
 import useUserStore from "../user/store";
 
 const PostCard = ({ post }: { post: Post }) => {
-  const { isLoggedIn } = useUserStore();
+  const { isLoggedIn, userId } = useUserStore();
   const { data: user, error } = usePostGetUser(post.postId);
   if (!user || error) {
     return null;
@@ -18,7 +18,7 @@ const PostCard = ({ post }: { post: Post }) => {
         <PostUser user={user} />
         <PostContent post={post} />
         {isLoggedIn && (
-          <PostActions postId={post.postId} userId={user.userId + ""} />
+          <PostActions postId={post.postId} userId={userId + ""} />
         )}
       </Box>
     </Card>
