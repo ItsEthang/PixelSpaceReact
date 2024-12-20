@@ -14,7 +14,7 @@ const ProfilePage = () => {
     return (
       <Container>
         <Heading as="h2" size="8">
-          Please login to see your profile
+          Please login to see profiles
         </Heading>
       </Container>
     );
