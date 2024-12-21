@@ -3,9 +3,9 @@ import apiClient from "../services/api-client";
 import { UserInfo } from "../interfaces/Entity";
 import ms from "ms";
 
-const useGetFollowing = (userId: number) => {
-  const getFollowing = async () => {
-    const res = await apiClient.get<UserInfo[]>(`/user/following`, {
+const useGetFollower = (userId: number) => {
+  const getFollower = async () => {
+    const res = await apiClient.get<UserInfo[]>(`/user/follower`, {
       headers: {
         userId: `${userId}`,
       },
@@ -13,11 +13,11 @@ const useGetFollowing = (userId: number) => {
     return res.data;
   };
   return useQuery({
-    queryKey: ["user", `${userId}`, "followings"],
-    queryFn: getFollowing,
+    queryKey: ["user", `${userId}`, "followers"],
+    queryFn: getFollower,
     retry: 2,
     staleTime: ms("1m"),
   });
 };
 
-export default useGetFollowing;
+export default useGetFollower;

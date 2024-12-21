@@ -15,7 +15,7 @@ const Navigation = () => {
         <LinkText>Profile</LinkText>
       </Link>
       <Separator orientation="vertical" />
-      <Link to="/">
+      <Link to={`/followers/${userId}`}>
         <LinkText>Followers</LinkText>
       </Link>
       <Separator orientation="vertical" />
