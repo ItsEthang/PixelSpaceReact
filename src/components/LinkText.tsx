@@ -6,7 +6,7 @@ const LinkText = ({ children }: { children: React.ReactNode }) => {
     <Text
       className="underline-offset-3 hover:underline hover:text-white"
       weight="medium"
-      color="gold"
+      color="plum"
     >
       {children}
     </Text>

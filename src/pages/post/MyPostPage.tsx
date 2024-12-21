@@ -1,6 +1,7 @@
-import { Flex, Heading, Separator } from "@radix-ui/themes";
+import { Button, Flex, Heading, Separator } from "@radix-ui/themes";
 import useUserStore from "../../components/user/store";
 import useGetUserPosts from "../../hooks/useGetUserPosts";
+import { Link } from "react-router-dom";
 
 const MyPostPage = () => {
   const { userId } = useUserStore();
@@ -11,8 +12,11 @@ const MyPostPage = () => {
 
   return (
     <Flex direction="column" justify="center" align="center" gap="4">
+      <Link to={`/mypost/new/${userId}`}>
+        <Button variant="surface">Make a Post</Button>
+      </Link>
       <Heading as="h2">My Posts</Heading>
-      <Separator size="4" orientation="horizontal" />
+      <Separator size="3" orientation="horizontal" />
     </Flex>
   );
 };
