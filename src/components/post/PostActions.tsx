@@ -25,7 +25,7 @@ const PostActions = ({ postId, userId }: Props) => {
         userId={userId}
       />
 
-      <CommentBtn />
+      <CommentBtn postId={postId} userId={userId} />
     </Flex>
   );
 };
