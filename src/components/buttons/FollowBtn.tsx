@@ -4,21 +4,13 @@ import { useEffect, useState } from "react";
 import apiClient from "../../services/api-client";
 
 interface Props {
-  user1Id: number | null;
+  user1Id: number;
   user2Id: number | undefined;
 }
 
 const FollowBtn = ({ user1Id, user2Id }: Props) => {
-  if (user1Id === null || user1Id === user2Id) {
-    return null;
-  }
-
-  const { data: followings, error, refetch } = useGetFollowing(user1Id);
-  const [isFollowing, setIsFollowing] = useState<boolean>();
-
-  if (error) {
-    return null;
-  }
+  const { data: followings, error } = useGetFollowing(user1Id);
+  const [isFollowing, setIsFollowing] = useState<boolean>(false);
 
   useEffect(() => {
     if (followings) {
@@ -26,7 +18,7 @@ const FollowBtn = ({ user1Id, user2Id }: Props) => {
         followings.some((following) => following.userId === user2Id)
       );
     }
-  }, []);
+  }, [followings]);
 
   const handleClick = () => {
     if (!isFollowing) {
@@ -57,11 +49,15 @@ const FollowBtn = ({ user1Id, user2Id }: Props) => {
           console.log(error);
         });
     }
-
     setIsFollowing(!isFollowing);
-    refetch();
   };
 
+  if (user1Id === user2Id) {
+    return null;
+  }
+  if (error) {
+    return null;
+  }
   return (
     <>
       {isFollowing ? (

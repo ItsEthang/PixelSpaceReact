@@ -28,7 +28,9 @@ const PostUser = ({ user }: Props) => {
           </Box>
         </Flex>
       </Link>
-      {isLoggedIn && <FollowBtn user1Id={userId} user2Id={user?.userId} />}
+      {isLoggedIn && userId && (
+        <FollowBtn user1Id={userId} user2Id={user?.userId} />
+      )}
     </Flex>
   );
 };
