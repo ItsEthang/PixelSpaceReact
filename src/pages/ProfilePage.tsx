@@ -30,6 +30,16 @@ const ProfilePage = () => {
       </>
     );
   }
+  if (!profile) {
+    return (
+      <>
+        <Heading>Sorry :(</Heading>
+        <Text>
+          The profile you're looking for cannot be shown at this time.
+        </Text>
+      </>
+    );
+  }
   return (
     <Container mt="8">
       <Flex direction="column" align="center" gap="5">
@@ -39,7 +49,7 @@ const ProfilePage = () => {
           fallback={profile?.name?.charAt(0) || "X"}
           radius="full"
         />
-        <FollowButtons />
+        <FollowButtons userId={+params.requestId!} />
         <Box>
           <Flex align="center" gap="5">
             <Heading as="h2" size="8">
