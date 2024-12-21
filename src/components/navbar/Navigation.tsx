@@ -7,7 +7,7 @@ const Navigation = () => {
   const { userId } = useUserStore();
   return (
     <Flex gap="3" align="center">
-      <Link to="/">
+      <Link to="/mypost">
         <LinkText>My Posts</LinkText>
       </Link>
       <Separator orientation="vertical" />

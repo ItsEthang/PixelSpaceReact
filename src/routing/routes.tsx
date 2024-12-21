@@ -6,6 +6,7 @@ import UserLogin from "../pages/user/UserLogin";
 import UserRegistration from "../pages/user/UserRegister";
 import ProfilePage from "../pages/ProfilePage";
 import EditProfilePage from "../pages/EditProfilePage";
+import MyPostPage from "../pages/post/MyPostPage";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       { path: "register", element: <UserRegistration /> },
       { path: "profile/:requestId", element: <ProfilePage /> },
       { path: "profile/:requestId/edit", element: <EditProfilePage /> },
+      { path: "mypost", element: <MyPostPage /> },
     ],
   },
 ]);
