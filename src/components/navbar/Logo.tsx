@@ -7,7 +7,7 @@ const Logo = () => {
     <Link to="/">
       <Flex align="center">
         <Avatar src={logo} fallback="PS" className="mr-2" />
-        <Text className="font-bold text-lg">Pixel Space</Text>
+        <Text className="font-bold text-lg">Rock.IT</Text>
       </Flex>
     </Link>
   );

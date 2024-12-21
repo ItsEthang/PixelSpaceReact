@@ -5,6 +5,7 @@ import useUserStore from "../user/store";
 import PostActions from "./PostActions";
 import PostContent from "./PostContent";
 import PostUser from "./PostUser";
+import { Link } from "react-router-dom";
 
 const PostCard = ({ post }: { post: Post }) => {
   const { isLoggedIn, userId } = useUserStore();
@@ -17,7 +18,9 @@ const PostCard = ({ post }: { post: Post }) => {
     <Card className="w-4/5">
       <Box px="3" py="1">
         <PostUser user={user} />
-        <PostContent post={post} />
+        <Link to={`/post/${post.postId}`}>
+          <PostContent post={post} />
+        </Link>
         {isLoggedIn && (
           <PostActions postId={post.postId} userId={userId + ""} />
         )}

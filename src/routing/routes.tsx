@@ -10,6 +10,7 @@ import UserFollower from "../pages/user/UserFollower";
 import UserFollowing from "../pages/user/UserFollowings";
 import UserLogin from "../pages/user/UserLogin";
 import UserRegistration from "../pages/user/UserRegister";
+import PostDetailPage from "../pages/post/PostDetailPage";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
       { path: "profile/:requestId/edit", element: <EditProfilePage /> },
       { path: "mypost", element: <MyPostPage /> },
       { path: "mypost/new/:userId", element: <NewPostPage /> },
+      { path: "post/:postId", element: <PostDetailPage /> },
       { path: "followings/:userId", element: <UserFollowing /> },
       { path: "followers/:userId", element: <UserFollower /> },
     ],
