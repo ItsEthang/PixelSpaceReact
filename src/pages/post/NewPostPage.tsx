@@ -62,7 +62,7 @@ const NewPostPage = () => {
         <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
           <Flex align="center" justify="center" direction="column" gap="5">
             <Text className="font-extrabold text-xl">Launch a New Post</Text>
-            <Box>
+            <Box className="w-4/5">
               <Text as="label">Title</Text>
 
               <TextField.Root
@@ -72,7 +72,7 @@ const NewPostPage = () => {
               <ErrorMessage>{errors.title?.message}</ErrorMessage>
             </Box>
             <Separator orientation="horizontal" size="4" />
-            <Box>
+            <Box className="w-4/5">
               <Text as="label">Content</Text>
               <Controller
                 name="content"
