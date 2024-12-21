@@ -52,7 +52,7 @@ const FollowBtn = ({ user1Id, user2Id }: Props) => {
     setIsFollowing(!isFollowing);
   };
 
-  if (user1Id === user2Id) {
+  if (user1Id + "" === user2Id + "") {
     return null;
   }
   if (error) {
