@@ -14,9 +14,9 @@ const PostUser = ({ user }: Props) => {
   const profileImg = user.profileImg ? user.profileImg : placeholder;
   const fallback = user.name ? user.name.charAt(0) : "X";
   return (
-    <Flex gap="3" align="center" className="mb-2">
+    <Flex gap="3" align="center">
       <Link to={`/profile/${user?.userId}`}>
-        <Flex gap="3" align="center" className="mb-2">
+        <Flex gap="3" align="center">
           <Avatar size="3" src={profileImg} radius="full" fallback={fallback} />
           <Box>
             <Text as="div" size="2" weight="bold">

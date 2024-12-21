@@ -19,7 +19,7 @@ const Navigation = () => {
         <LinkText>Followers</LinkText>
       </Link>
       <Separator orientation="vertical" />
-      <Link to="/">
+      <Link to={`/followings/${userId}`}>
         <LinkText>Followings</LinkText>
       </Link>
     </Flex>

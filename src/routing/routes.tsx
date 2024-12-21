@@ -8,6 +8,7 @@ import ProfilePage from "../pages/ProfilePage";
 import EditProfilePage from "../pages/EditProfilePage";
 import MyPostPage from "../pages/post/MyPostPage";
 import NewPostPage from "../pages/post/NewPostPage";
+import UserFollowing from "../pages/user/UserFollowings";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
       { path: "profile/:requestId/edit", element: <EditProfilePage /> },
       { path: "mypost", element: <MyPostPage /> },
       { path: "mypost/new/:userId", element: <NewPostPage /> },
+      { path: "followings/:userId", element: <UserFollowing /> },
     ],
   },
 ]);
