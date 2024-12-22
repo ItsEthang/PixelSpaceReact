@@ -14,6 +14,8 @@ const SearchField = () => {
         e.preventDefault();
         if (ref.current) {
           setTitle(ref.current.value);
+          // console.log("submitted");
+          // console.log("value" + ref.current.value);
           navigate("/");
         }
       }}

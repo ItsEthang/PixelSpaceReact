@@ -3,11 +3,7 @@ import useGetFollowing from "../../hooks/useGetFollowing";
 import FollowingCard from "./FollowingCard";
 import useUserStore from "../user/store";
 
-interface Props {
-  handleClick: (userId: string | undefined) => void;
-}
-
-const FollowingList = ({ handleClick }: Props) => {
+const FollowingList = () => {
   const { userId } = useUserStore();
   const { data: followings, error } = useGetFollowing(userId!);
   if (error) return null;
@@ -23,11 +19,7 @@ const FollowingList = ({ handleClick }: Props) => {
 
         <ul className="list-none">
           {followings?.map((following) => (
-            <FollowingCard
-              following={following}
-              key={following.username}
-              handleClick={handleClick}
-            />
+            <FollowingCard following={following} key={following.username} />
           ))}
         </ul>
       </Flex>

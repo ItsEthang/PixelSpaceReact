@@ -1,18 +1,19 @@
 import { Avatar, Card, Flex, Text } from "@radix-ui/themes";
 import { UserInfo } from "../../interfaces/Entity";
 import { useState } from "react";
+import usePostQueryStore from "../post/store";
 
 interface Props {
   following: UserInfo;
-  handleClick: (userId: string | undefined) => void;
 }
-const FollowingCard = ({ following, handleClick }: Props) => {
+const FollowingCard = ({ following }: Props) => {
+  const { setUsername } = usePostQueryStore();
   const [isFiltered, setIsFiltered] = useState(false);
   const onClick = () => {
     if (isFiltered) {
-      handleClick(undefined);
+      setUsername("");
     } else {
-      handleClick(following.userId + "");
+      setUsername(following.username);
     }
     setIsFiltered(!isFiltered);
   };
