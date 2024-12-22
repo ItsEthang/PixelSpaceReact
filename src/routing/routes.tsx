@@ -25,10 +25,15 @@ const router = createBrowserRouter([
       { path: "profile/:requestId/edit", element: <EditProfilePage /> },
       { path: "mypost", element: <MyPostPage /> },
       { path: "mypost/new/:userId", element: <NewPostPage /> },
-      { path: "post/:postId", element: <PostDetailPage /> },
       { path: "followings/:userId", element: <UserFollowing /> },
       { path: "followers/:userId", element: <UserFollower /> },
     ],
+  },
+  {
+    path: "post",
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children: [{ path: ":postId", element: <PostDetailPage /> }],
   },
 ]);
 

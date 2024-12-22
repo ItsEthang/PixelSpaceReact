@@ -9,7 +9,7 @@ const useGetPostDetail = (postId: string) => {
     return res.data;
   };
   return useQuery<PostDetail, Error>({
-    queryKey: ["posts"],
+    queryKey: ["posts", { postId }, "detail"],
     queryFn: getPostDetail,
     retry: 3,
     staleTime: ms("1d"),
