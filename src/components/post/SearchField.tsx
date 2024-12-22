@@ -1,12 +1,10 @@
 import { TextField } from "@radix-ui/themes";
+import { useRef } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import usePostQueryStore from "./store";
-import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
 
 const SearchField = () => {
   const { setTitle } = usePostQueryStore();
-  const navigate = useNavigate();
   const ref = useRef<HTMLInputElement>(null);
   return (
     <form
@@ -14,14 +12,11 @@ const SearchField = () => {
         e.preventDefault();
         if (ref.current) {
           setTitle(ref.current.value);
-          // console.log("submitted");
-          // console.log("value" + ref.current.value);
-          navigate("/");
         }
       }}
     >
-      <TextField.Root placeholder="Search by title…">
-        <TextField.Slot ref={ref}>
+      <TextField.Root placeholder="Search by title…" ref={ref}>
+        <TextField.Slot>
           <FaMagnifyingGlass height="16" width="16" />
         </TextField.Slot>
       </TextField.Root>
