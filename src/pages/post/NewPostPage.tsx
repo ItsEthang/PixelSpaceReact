@@ -16,10 +16,12 @@ import ErrorMessage from "../../components/ErrorMessage";
 import { PostInput } from "../../interfaces/PostInput";
 import apiClient from "../../services/api-client";
 import { useQueryClient } from "@tanstack/react-query";
+import useGetUserById from "../../hooks/useGetUserById";
 
 const NewPostPage = () => {
   const params = useParams();
   const userId = params.userId!;
+  const { data: user } = useGetUserById(userId);
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [isSubmitting, setSubmitting] = useState(false);
@@ -48,6 +50,12 @@ const NewPostPage = () => {
         }
       );
       queryClient.invalidateQueries(["posts"]);
+      queryClient.invalidateQueries([
+        "posts",
+        {
+          username: user?.username,
+        },
+      ]);
       navigate("/");
     } catch (error) {
       setError("Due to an error. You launch a post at this time");
