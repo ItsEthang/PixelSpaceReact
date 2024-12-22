@@ -9,6 +9,7 @@ import ErrorMessage from "../components/ErrorMessage";
 import { ProfileInput } from "../interfaces/ProfileInput";
 import apiClient from "../services/api-client";
 import useGetUserById from "../hooks/useGetUserById";
+import { useQueryClient } from "@tanstack/react-query";
 
 const EditProfilePage = () => {
   const params = useParams();
@@ -17,6 +18,7 @@ const EditProfilePage = () => {
   const nagivate = useNavigate();
   const [error, setError] = useState("");
   const [isSubmitting, setSubmitting] = useState(false);
+  const queryClient = useQueryClient();
   const {
     control,
     register,
@@ -36,6 +38,7 @@ const EditProfilePage = () => {
     } catch (error) {
       setError("Due to an error. Your profile update failed to complete.");
     } finally {
+      queryClient.invalidateQueries([{ user: "" + userId }]);
       setSubmitting(false);
     }
   };

@@ -30,13 +30,13 @@ const CommentBtn = ({ postId, userId }: Props) => {
     } catch (error) {
       setError("Due to an error. You launch a comment at this time");
     } finally {
+      queryClient.invalidateQueries([
+        "posts",
+        { postId: postId + "" },
+        "comments",
+      ]);
       setSubmitting(false);
     }
-    queryClient.invalidateQueries([
-      "posts",
-      { postId: postId + "" },
-      "comments",
-    ]);
   };
   return (
     <Popover.Root>
