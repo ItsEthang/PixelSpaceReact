@@ -1,6 +1,5 @@
-import { Box, Flex, Heading, Separator, Text } from "@radix-ui/themes";
+import { Flex, Heading, Separator } from "@radix-ui/themes";
 import useGetPostComments from "../../hooks/useGetPostComment";
-import FollowingCard from "../follow/FollowingCard";
 import CommentCard from "./CommentCard";
 
 const CommentList = ({ postId }: { postId: string }) => {
