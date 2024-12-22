@@ -8,7 +8,7 @@ const PostContent = ({ post }: { post: Post }) => {
       <Text as="div" size="6" weight="bold" mb="2">
         {post.title}
       </Text>
-      <Text as="p" size="2" color="gray" className="line-clamp-3">
+      <Text as="div" size="2" color="gray" className="line-clamp-3">
         <ReactMarkdown>{post.content}</ReactMarkdown>
       </Text>
     </Box>
