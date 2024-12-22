@@ -16,9 +16,6 @@ const DropDownNav = () => {
       </DropdownMenu.Trigger>
       <DropdownMenu.Content variant="soft">
         <DropdownMenu.Item>
-          <Link to="/mypost">My Posts</Link>
-        </DropdownMenu.Item>
-        <DropdownMenu.Item>
           <Link to={`/profile/${userId}`}>Profile</Link>
         </DropdownMenu.Item>
         <DropdownMenu.Item>

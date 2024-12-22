@@ -24,7 +24,7 @@ const router = createBrowserRouter([
       { path: "profile/:requestId", element: <ProfilePage /> },
       { path: "profile/:requestId/edit", element: <EditProfilePage /> },
       { path: "mypost", element: <MyPostPage /> },
-      { path: "mypost/new/:userId", element: <NewPostPage /> },
+      { path: "new/:userId", element: <NewPostPage /> },
       { path: "followings/:userId", element: <UserFollowing /> },
       { path: "followers/:userId", element: <UserFollower /> },
     ],

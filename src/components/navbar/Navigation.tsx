@@ -8,9 +8,6 @@ const Navigation = () => {
 
   return (
     <TabNav.Root>
-      <TabNav.Link active={location.pathname === "/mypost"}>
-        <Link to="/mypost">My Posts</Link>
-      </TabNav.Link>
       <TabNav.Link active={location.pathname === `/profile/${userId}`}>
         <Link to={`/profile/${userId}`}>Profile</Link>
       </TabNav.Link>

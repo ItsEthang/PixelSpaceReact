@@ -47,8 +47,8 @@ const NewPostPage = () => {
           },
         }
       );
-      queryClient.invalidateQueries(["user", `${userId}`, "posts"]);
-      navigate("/mypost");
+      queryClient.invalidateQueries(["posts"]);
+      navigate("/");
     } catch (error) {
       setError("Due to an error. You launch a post at this time");
     } finally {
