@@ -1,4 +1,5 @@
 import { Button, Text } from "@radix-ui/themes";
+import { RiLogoutBoxLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 const Logout = ({ logout }: { logout: () => void }) => {
@@ -6,6 +7,7 @@ const Logout = ({ logout }: { logout: () => void }) => {
     <Link to="/">
       <Button onClick={logout} variant="surface">
         <Text weight="bold">Logout</Text>
+        <RiLogoutBoxLine />
       </Button>
     </Link>
   );

@@ -7,7 +7,7 @@ const Navigation = () => {
   const location = useLocation();
 
   return (
-    <TabNav.Root highContrast justify="start">
+    <TabNav.Root>
       <TabNav.Link active={location.pathname === "/mypost"}>
         <Link to="/mypost">My Posts</Link>
       </TabNav.Link>
