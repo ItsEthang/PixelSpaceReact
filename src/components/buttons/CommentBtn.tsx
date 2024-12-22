@@ -5,6 +5,7 @@ import { MdChat } from "react-icons/md";
 import ErrorCallout from "../ErrorCallout";
 import ErrorMessage from "../ErrorMessage";
 import useMakeComment from "../../hooks/useMakeComment";
+import { useQueryClient } from "@tanstack/react-query";
 
 interface CommentInput {
   content: string;
@@ -16,6 +17,7 @@ interface Props {
 const CommentBtn = ({ postId, userId }: Props) => {
   const [error, setError] = useState("");
   const [isSubmitting, setSubmitting] = useState(false);
+  const queryClient = useQueryClient();
   const {
     register,
     handleSubmit,
@@ -30,6 +32,11 @@ const CommentBtn = ({ postId, userId }: Props) => {
     } finally {
       setSubmitting(false);
     }
+    queryClient.invalidateQueries([
+      "posts",
+      { postId: postId + "" },
+      "comments",
+    ]);
   };
   return (
     <Popover.Root>
