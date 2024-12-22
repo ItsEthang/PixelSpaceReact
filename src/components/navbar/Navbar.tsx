@@ -11,10 +11,9 @@ const Navbar = () => {
   return (
     <nav className="border-b-2 mb-5 py-4 px-8 bg-zinc-800">
       <Flex justify="between" align="center">
-        <Flex gap="5">
-          <Logo />
-          {isLoggedIn && <Navigation />}
-        </Flex>
+        <Logo />
+
+        {isLoggedIn && <Navigation />}
         {isLoggedIn ? <Logout logout={logout} /> : <Login />}
       </Flex>
     </nav>

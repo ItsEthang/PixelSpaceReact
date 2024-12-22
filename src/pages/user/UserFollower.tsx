@@ -28,7 +28,7 @@ const UserFollowers = () => {
         <Box>
           <Heading as="h2" size="8" mb="3">
             {userId + "" === params.userId ? "My " : profile?.name + "'s "}
-            Followers
+            Followers 🧑‍🚀
           </Heading>
           <Separator size="4" />
         </Box>

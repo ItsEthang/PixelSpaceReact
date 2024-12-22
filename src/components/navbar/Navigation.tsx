@@ -1,28 +1,26 @@
-import { Flex, Separator } from "@radix-ui/themes";
-import { Link } from "react-router-dom";
-import LinkText from "../LinkText";
+import { TabNav } from "@radix-ui/themes";
+import { Link, useLocation } from "react-router-dom";
 import useUserStore from "../user/store";
 
 const Navigation = () => {
   const { userId } = useUserStore();
+  const location = useLocation();
+
   return (
-    <Flex gap="3" align="center">
-      <Link to="/mypost">
-        <LinkText>My Posts</LinkText>
-      </Link>
-      <Separator orientation="vertical" />
-      <Link to={`/profile/${userId}`}>
-        <LinkText>Profile</LinkText>
-      </Link>
-      <Separator orientation="vertical" />
-      <Link to={`/followers/${userId}`}>
-        <LinkText>Followers</LinkText>
-      </Link>
-      <Separator orientation="vertical" />
-      <Link to={`/followings/${userId}`}>
-        <LinkText>Followings</LinkText>
-      </Link>
-    </Flex>
+    <TabNav.Root highContrast justify="start">
+      <TabNav.Link active={location.pathname === "/mypost"}>
+        <Link to="/mypost">My Posts</Link>
+      </TabNav.Link>
+      <TabNav.Link active={location.pathname === `/profile/${userId}`}>
+        <Link to={`/profile/${userId}`}>Profile</Link>
+      </TabNav.Link>
+      <TabNav.Link active={location.pathname === `/followers/${userId}`}>
+        <Link to={`/followers/${userId}`}>Followers</Link>
+      </TabNav.Link>
+      <TabNav.Link active={location.pathname === `/followings/${userId}`}>
+        <Link to={`/followings/${userId}`}>Followings</Link>
+      </TabNav.Link>
+    </TabNav.Root>
   );
 };
 

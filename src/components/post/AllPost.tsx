@@ -12,7 +12,11 @@ const AllPost = ({ userId }: { userId?: string }) => {
     return <Heading>Sorry, there is an error fetching the posts</Heading>;
   return (
     <Flex direction="column" justify="center" align="center" gap="4">
-      {!userId && <Heading as="h2">Posts of the Day</Heading>}
+      {!userId && (
+        <Heading as="h2" size="6">
+          🚀 Posts of the Day 🚀
+        </Heading>
+      )}
       <Separator size="4" orientation="horizontal" />
       {posts?.map((post) => (
         <PostCard post={post} key={post.postId} />

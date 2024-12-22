@@ -14,7 +14,7 @@ const MyPostPage = () => {
       <Flex direction="column" justify="center" align="center" gap="4">
         <Flex align="center" gap="5">
           <Heading as="h2" size="8">
-            My Posts
+            🚀 My Posts 🚀
           </Heading>
           <Separator orientation="vertical" size="2" />
           <Link to={`/mypost/new/${userId}`}>
