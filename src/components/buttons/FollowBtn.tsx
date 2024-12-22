@@ -1,6 +1,7 @@
 import { Button } from "@radix-ui/themes";
-import useGetFollowing from "../../hooks/useGetFollowing";
+import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
+import useGetFollowing from "../../hooks/useGetFollowing";
 import apiClient from "../../services/api-client";
 
 interface Props {
@@ -11,6 +12,7 @@ interface Props {
 const FollowBtn = ({ user1Id, user2Id }: Props) => {
   const { data: followings, error } = useGetFollowing(user1Id);
   const [isFollowing, setIsFollowing] = useState<boolean>(false);
+  const queryClient = useQueryClient();
 
   useEffect(() => {
     if (followings) {
@@ -32,6 +34,11 @@ const FollowBtn = ({ user1Id, user2Id }: Props) => {
             },
           }
         )
+        .then(() => {
+          setIsFollowing(true);
+          queryClient.invalidateQueries(["user", `${user1Id}`, "followings"]);
+          queryClient.invalidateQueries(["posts"]);
+        })
         .catch((error) => {
           console.log(error);
         });
@@ -45,11 +52,15 @@ const FollowBtn = ({ user1Id, user2Id }: Props) => {
             userId2: user2Id,
           },
         })
+        .then(() => {
+          setIsFollowing(false);
+          queryClient.invalidateQueries(["user", `${user1Id}`, "followings"]);
+          queryClient.invalidateQueries(["posts"]);
+        })
         .catch((error) => {
           console.log(error);
         });
     }
-    setIsFollowing(!isFollowing);
   };
 
   if (user1Id + "" === user2Id + "") {
