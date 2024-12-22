@@ -1,5 +1,6 @@
 import { Box, Text } from "@radix-ui/themes";
 import { Post } from "../../interfaces/Entity";
+import ReactMarkdown from "react-markdown";
 
 const PostContent = ({ post }: { post: Post }) => {
   return (
@@ -8,7 +9,7 @@ const PostContent = ({ post }: { post: Post }) => {
         {post.title}
       </Text>
       <Text as="p" size="2" color="gray" className="line-clamp-3">
-        {post.content}
+        <ReactMarkdown>{post.content}</ReactMarkdown>
       </Text>
     </Box>
   );

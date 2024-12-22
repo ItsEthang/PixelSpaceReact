@@ -4,6 +4,7 @@ import usePostGetUser from "../../hooks/usePostGetUser";
 import PostUser from "./PostUser";
 import PostActions from "./PostActions";
 import useUserStore from "../user/store";
+import ReactMarkdown from "react-markdown";
 
 interface Props {
   postId: string;
@@ -28,8 +29,11 @@ const PostDetailComponent = ({ postId }: Props) => {
       <Flex justify="center">
         <Heading as="h2">{postDetail.title}</Heading>
       </Flex>
-      <Text as="p" className="h-3/4 bg-zinc-900/50 my-7 p-8 overflow-scroll">
-        {postDetail.content}
+      <Text
+        as="p"
+        className="h-3/4 bg-zinc-900/50 my-7 p-8 overflow-scroll prose dark:prose-invert"
+      >
+        <ReactMarkdown>{postDetail.content}</ReactMarkdown>
       </Text>
       {userId && <PostActions postId={+postId} userId={userId + ""} />}
     </>
