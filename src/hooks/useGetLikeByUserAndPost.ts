@@ -15,7 +15,7 @@ const useGetLikeByUserAndPost = (postId: string, userId: string) => {
     queryKey: [userId, "like", postId],
     queryFn: getPostLikedByUser,
     retry: 2,
-    staleTime: ms("5s"),
+    staleTime: ms("1m"),
   });
 };
 

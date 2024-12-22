@@ -16,7 +16,7 @@ const useGetUserById = (userId: string) => {
     queryKey: ["user", `${userId}`],
     queryFn: getUserById,
     retry: 2,
-    staleTime: ms("1m"),
+    staleTime: ms("5m"),
   });
 };
 

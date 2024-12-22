@@ -12,7 +12,7 @@ const useGetPost = () => {
     queryKey: ["posts"],
     queryFn: getPost,
     retry: 3,
-    staleTime: ms("1m"),
+    staleTime: ms("3m"),
   });
 };
 

@@ -11,7 +11,7 @@ const useGetPostLikeCount = (postId: string) => {
     queryKey: ["post", `${postId}`, "like"],
     queryFn: getPostLikeCount,
     retry: 2,
-    staleTime: ms("5s"),
+    staleTime: ms("1m"),
   });
 };
 

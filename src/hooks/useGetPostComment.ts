@@ -12,7 +12,7 @@ const useGetPostComments = (postId: string) => {
     queryKey: ["posts", { postId }, "comments"],
     queryFn: getPostComments,
     retry: 3,
-    staleTime: ms("3m"),
+    staleTime: ms("5m"),
   });
 };
 
