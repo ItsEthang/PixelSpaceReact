@@ -1,15 +1,19 @@
 import { Flex } from "@radix-ui/themes";
 import { useParams } from "react-router-dom";
 import PostDetailComponent from "../../components/post/PostDetailComponent";
+import CommentList from "../../components/comment/CommentList";
 
 const PostDetailPage = () => {
   const { postId } = useParams();
 
   return (
     <Flex justify="center">
-      <div className="grid grid-cols-5 w-5/6 h-screen  p-8 bg-zinc-800">
-        <div className="col-span-5 lg:col-span-4">
+      <div className="grid grid-cols-6 w-5/6 h-screen  p-8 bg-zinc-800 gap-4">
+        <div className="col-span-6 lg:col-span-4">
           <PostDetailComponent postId={postId!} />
+        </div>
+        <div className="col-span-6 lg:col-span-2">
+          <CommentList postId={postId!} />
         </div>
       </div>
     </Flex>

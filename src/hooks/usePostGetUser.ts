@@ -12,7 +12,7 @@ const usePostGetUser = (postId: number) => {
     queryKey: ["posts", `${postId}`, "user"],
     queryFn: getPostUser,
     retry: 3,
-    staleTime: ms("3m"),
+    staleTime: ms("3h"),
   });
 };
 

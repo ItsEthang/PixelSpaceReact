@@ -5,6 +5,15 @@ export interface Post {
   timeCreated: number;
 }
 
+export interface Comment {
+  commentId: number;
+  content: string;
+  timeCreated: number;
+  likes: {
+    likeId: number;
+  }[];
+}
+
 export interface UserInfo {
   userId: number;
   username: string;
