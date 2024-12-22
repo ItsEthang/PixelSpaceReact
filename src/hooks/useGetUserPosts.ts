@@ -10,7 +10,8 @@ const useGetUserPosts = (userId: string) => {
         userId,
       },
     });
-    return res.data;
+    const sortedPosts = res.data.sort((a, b) => b.timeCreated - a.timeCreated);
+    return sortedPosts;
   };
   return useQuery<Post[], Error>({
     queryKey: ["user", `${userId}`, "posts"],
