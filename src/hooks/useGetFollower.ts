@@ -16,7 +16,7 @@ const useGetFollower = (userId: number) => {
     queryKey: ["user", `${userId}`, "followers"],
     queryFn: getFollower,
     retry: 2,
-    staleTime: ms("5m"),
+    staleTime: ms("30s"),
   });
 };
 
