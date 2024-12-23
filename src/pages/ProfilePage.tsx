@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import FollowButtons from "../components/buttons/FollowButtons";
 import EditProfileBtn from "../components/buttons/EditProfileBtn";
 import useUserStore from "../components/user/store";
+import ReactMarkdown from "react-markdown";
 
 const ProfilePage = () => {
   const params = useParams();
@@ -64,10 +65,10 @@ const ProfilePage = () => {
           </Text>
         </Box>
         <Text
-          className="max-h-96 w-full overflow-scroll border-double border-2 border-white p-5"
+          className="max-h-96 w-full overflow-scroll border-double border-2 border-white p-5 prose dark:prose-invert"
           as="p"
         >
-          {profile?.bio}
+          <ReactMarkdown>{profile?.bio}</ReactMarkdown>
         </Text>
       </Flex>
     </Container>
