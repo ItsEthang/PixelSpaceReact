@@ -4,14 +4,14 @@ import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 import { AuthUser } from "../../interfaces/Entity";
 import Login from "../buttons/Login";
 import Logout from "../buttons/Logout";
-import useUserStore from "../user/store";
 import DropDownNav from "./DropDownNav";
 import Logo from "./Logo";
 import Navigation from "./Navigation";
 import UserAvatar from "./UserAvatar";
+import useUserStore from "../user/store";
 
 const Navbar = () => {
-  const { isLoggedIn, logout } = useUserStore();
+  const { isLoggedIn } = useUserStore();
   const isAuth = useIsAuthenticated();
   const authUser = useAuthUser<AuthUser>();
   const userId = authUser ? authUser.uid + "" : "";
@@ -31,7 +31,7 @@ const Navbar = () => {
         >
           {isAuth && <Navigation />}
 
-          {isAuth ? <Logout logout={logout} /> : <Login />}
+          {isAuth ? <Logout /> : <Login />}
         </div>
         <div className="block md:hidden">
           <DropDownNav />
