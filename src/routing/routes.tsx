@@ -11,6 +11,7 @@ import UserFollowing from "../pages/user/UserFollowings";
 import UserLogin from "../pages/user/UserLogin";
 import UserRegistration from "../pages/user/UserRegister";
 import PostDetailPage from "../pages/post/PostDetailPage";
+import RequireAuth from "@auth-kit/react-router/RequireAuth";
 
 const router = createBrowserRouter([
   {
@@ -21,11 +22,38 @@ const router = createBrowserRouter([
       { path: "", element: <HomeGrid /> },
       { path: "login", element: <UserLogin /> },
       { path: "register", element: <UserRegistration /> },
-      { path: "profile/:requestId", element: <ProfilePage /> },
-      { path: "profile/:requestId/edit", element: <EditProfilePage /> },
-      { path: "mypost", element: <MyPostPage /> },
-      { path: "new/:userId", element: <NewPostPage /> },
-      { path: "followings/:userId", element: <UserFollowing /> },
+      {
+        path: "profile/:requestId",
+        element: (
+          <RequireAuth fallbackPath={"/login"}>
+            <ProfilePage />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: "profile/:requestId/edit",
+        element: <EditProfilePage />,
+      },
+      {
+        path: "mypost",
+        element: (
+          <RequireAuth fallbackPath={"/login"}>
+            <MyPostPage />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: "new/:userId",
+        element: (
+          <RequireAuth fallbackPath={"/login"}>
+            <NewPostPage />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: "followings/:userId",
+        element: <UserFollowing />,
+      },
       { path: "followers/:userId", element: <UserFollower /> },
     ],
   },
