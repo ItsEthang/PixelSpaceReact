@@ -2,10 +2,15 @@ import { Flex, Heading, Separator } from "@radix-ui/themes";
 import useGetFollowing from "../../hooks/useGetFollowing";
 import FollowingCard from "./FollowingCard";
 import useUserStore from "../user/store";
+import useAuthUser from "react-auth-kit/hooks/useAuthUser";
+import { AuthUser } from "../../interfaces/Entity";
 
 const FollowingList = () => {
-  const { userId } = useUserStore();
-  const { data: followings, error } = useGetFollowing(userId!);
+  const { isLoggedIn } = useUserStore();
+  const authUser = useAuthUser<AuthUser>();
+  const uid = authUser ? authUser.uid + "" : "";
+
+  const { data: followings, error } = useGetFollowing(uid);
   if (error) return null;
   return (
     <>
