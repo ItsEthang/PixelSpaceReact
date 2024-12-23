@@ -1,4 +1,4 @@
-import { Flex, Text } from "@radix-ui/themes";
+import { Avatar, Flex, Text } from "@radix-ui/themes";
 import useUserStore from "../user/store";
 import Login from "../buttons/Login";
 import Logo from "./Logo";
@@ -15,9 +15,17 @@ const Navbar = () => {
     <nav className="border-b-2 mb-5 p-4 md:px-8 bg-zinc-800">
       <Flex justify="between" align="center">
         <Logo />
-        {isLoggedIn && <Text as="span">Hi! {user?.name}</Text>}
+        {isLoggedIn && (
+          <>
+            <Avatar
+              src={user?.profileImg}
+              fallback={user ? user.name.charAt(0) : ""}
+              size="2"
+            />
+          </>
+        )}
         <div
-          className={`hidden md:flex w-4/5 ${
+          className={`hidden md:flex w-5/6 ${
             isLoggedIn ? "justify-between" : "justify-end"
           } items-center`}
         >
