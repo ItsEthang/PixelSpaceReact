@@ -6,10 +6,13 @@ import DropDownNav from "./DropDownNav";
 import Logo from "./Logo";
 import Navigation from "./Navigation";
 import UserAvatar from "./UserAvatar";
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
 
 const Navbar = () => {
   const { isLoggedIn, logout, userId } = useUserStore();
-
+  const { isAuth, authUser } = useContext(AuthContext);
+  console.log("Auth Status " + isAuth);
   return (
     <nav className="border-b-2 mb-5 p-4 md:px-8 bg-zinc-800">
       <Flex justify="between" align="center">
