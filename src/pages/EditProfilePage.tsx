@@ -38,7 +38,7 @@ const EditProfilePage = () => {
     } catch (error) {
       setError("Due to an error. Your profile update failed to complete.");
     } finally {
-      queryClient.invalidateQueries([{ user: "" + userId }]);
+      queryClient.invalidateQueries(["user", userId]);
       setSubmitting(false);
     }
   };
