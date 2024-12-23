@@ -1,25 +1,25 @@
 import { Avatar, Card, Flex, Text } from "@radix-ui/themes";
 import { UserInfo } from "../../interfaces/Entity";
-import { useState } from "react";
 import usePostQueryStore from "../post/store";
 
 interface Props {
   following: UserInfo;
 }
 const FollowingCard = ({ following }: Props) => {
-  const { setUsername } = usePostQueryStore();
-  const [isFiltered, setIsFiltered] = useState(false);
+  const { postQuery, setUsername } = usePostQueryStore();
+  const thisUsername = following.username;
   const onClick = () => {
-    if (isFiltered) {
+    if (postQuery.username === thisUsername) {
       setUsername("");
     } else {
-      setUsername(following.username);
+      setUsername(thisUsername);
     }
-    setIsFiltered(!isFiltered);
   };
   return (
     <Card
-      className="hover:bg-slate-800 transition-all w-40 xl:w-52 my-3"
+      className={`${
+        postQuery.username === thisUsername && "bg-slate-800"
+      } hover:bg-slate-800 transition-all w-40 xl:w-52 my-3`}
       onClick={onClick}
     >
       <Flex gap="3" align="center">
