@@ -1,8 +1,8 @@
-import { Button, Flex, IconButton, Text, TextField } from "@radix-ui/themes";
+import { Button, Flex, Text, TextField } from "@radix-ui/themes";
 import { useRef } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import usePostQueryStore from "./store";
 import { MdClear } from "react-icons/md";
+import usePostQueryStore from "./store";
 
 const SearchField = () => {
   const { postQuery, setTitle } = usePostQueryStore();
