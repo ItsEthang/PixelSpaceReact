@@ -1,15 +1,14 @@
-import { Avatar, Flex, Text } from "@radix-ui/themes";
-import useUserStore from "../user/store";
+import { Flex } from "@radix-ui/themes";
 import Login from "../buttons/Login";
-import Logo from "./Logo";
 import Logout from "../buttons/Logout";
-import Navigation from "./Navigation";
+import useUserStore from "../user/store";
 import DropDownNav from "./DropDownNav";
-import useGetUserById from "../../hooks/useGetUserById";
+import Logo from "./Logo";
+import Navigation from "./Navigation";
+import UserAvatar from "./UserAvatar";
 
 const Navbar = () => {
   const { isLoggedIn, logout, userId } = useUserStore();
-  const { data: user } = isLoggedIn ? useGetUserById(userId + "") : {};
 
   return (
     <nav className="border-b-2 mb-5 p-4 md:px-8 bg-zinc-800">
@@ -17,11 +16,7 @@ const Navbar = () => {
         <Logo />
         {isLoggedIn && (
           <>
-            <Avatar
-              src={user?.profileImg}
-              fallback={user ? user.name.charAt(0) : ""}
-              size="2"
-            />
+            <UserAvatar userId={userId + ""} />
           </>
         )}
         <div
