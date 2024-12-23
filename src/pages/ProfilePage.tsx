@@ -1,25 +1,18 @@
 import { Avatar, Box, Container, Flex, Heading, Text } from "@radix-ui/themes";
-import useGetUserById from "../hooks/useGetUserById";
-import { useParams } from "react-router-dom";
-import FollowButtons from "../components/buttons/FollowButtons";
-import EditProfileBtn from "../components/buttons/EditProfileBtn";
-import useUserStore from "../components/user/store";
+import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 import ReactMarkdown from "react-markdown";
+import { useParams } from "react-router-dom";
+import EditProfileBtn from "../components/buttons/EditProfileBtn";
+import FollowButtons from "../components/buttons/FollowButtons";
+import useAuthUserId from "../hooks/useAuthUserId";
+import useGetUserById from "../hooks/useGetUserById";
 
 const ProfilePage = () => {
   const params = useParams();
-  const { isLoggedIn, userId: loggedUserId } = useUserStore();
+  // const { isLoggedIn } = useUserStore();
   const { data: profile, error } = useGetUserById(params.requestId!);
-
-  if (!isLoggedIn) {
-    return (
-      <Container>
-        <Heading as="h2" size="8">
-          Please login to see profiles
-        </Heading>
-      </Container>
-    );
-  }
+  const isAuth = useIsAuthenticated();
+  const userId = useAuthUserId();
 
   if (error) {
     return (
@@ -46,8 +39,8 @@ const ProfilePage = () => {
       <Flex direction="column" align="center" gap="5">
         <Avatar
           size="8"
-          src={profile?.profileImg}
-          fallback={profile?.name?.charAt(0) || "X"}
+          src={profile.profileImg}
+          fallback={profile.name.charAt(0) || "X"}
           radius="full"
         />
         <FollowButtons userId={+params.requestId!} />
@@ -56,19 +49,19 @@ const ProfilePage = () => {
             <Heading as="h2" size="8">
               {profile?.name}
             </Heading>
-            {isLoggedIn && loggedUserId + "" === params.requestId && (
-              <EditProfileBtn userId={params.requestId!} />
+            {isAuth && userId === params.requestId && (
+              <EditProfileBtn userId={userId} />
             )}
           </Flex>
           <Text as="div" color="gray" weight="light" size="1">
-            @{profile?.username}
+            @{profile.username}
           </Text>
         </Box>
         <Text
           className="max-h-96 w-full overflow-scroll border-double border-2 border-white p-5 prose dark:prose-invert"
           as="p"
         >
-          <ReactMarkdown>{profile?.bio}</ReactMarkdown>
+          <ReactMarkdown>{profile.bio}</ReactMarkdown>
         </Text>
       </Flex>
     </Container>

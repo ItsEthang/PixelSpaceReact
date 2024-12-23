@@ -1,9 +1,9 @@
 import { TabNav } from "@radix-ui/themes";
 import { Link, useLocation } from "react-router-dom";
-import useUserStore from "../user/store";
+import useAuthUserId from "../../hooks/useAuthUserId";
 
 const Navigation = () => {
-  const { userId } = useUserStore();
+  const userId = useAuthUserId();
   const location = useLocation();
 
   return (
