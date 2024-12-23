@@ -6,8 +6,8 @@ import usePostQueryStore from "./store";
 
 const PostManage = () => {
   const { userId: loginId, isLoggedIn } = useUserStore();
-  const { data: user } = useGetUserById(loginId + "");
   const { setUsername } = usePostQueryStore();
+  const { data: user } = isLoggedIn ? useGetUserById(loginId + "") : {};
   return (
     <Flex align="center" gap="5">
       <Button variant="outline" onClick={() => setUsername("")}>
