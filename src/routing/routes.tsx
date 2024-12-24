@@ -52,9 +52,20 @@ const router = createBrowserRouter([
       },
       {
         path: "followings/:userId",
-        element: <UserFollowing />,
+        element: (
+          <RequireAuth fallbackPath={"/login"}>
+            <UserFollowing />
+          </RequireAuth>
+        ),
       },
-      { path: "followers/:userId", element: <UserFollower /> },
+      {
+        path: "followers/:userId",
+        element: (
+          <RequireAuth fallbackPath={"/login"}>
+            <UserFollower />
+          </RequireAuth>
+        ),
+      },
     ],
   },
   {

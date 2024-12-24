@@ -9,7 +9,6 @@ import useGetUserById from "../hooks/useGetUserById";
 
 const ProfilePage = () => {
   const params = useParams();
-  // const { isLoggedIn } = useUserStore();
   const { data: profile, error } = useGetUserById(params.requestId!);
   const isAuth = useIsAuthenticated();
   const userId = useAuthUserId();
