@@ -11,7 +11,7 @@ const PostManage = () => {
   const { setUsername } = usePostQueryStore();
   const { data: user } = isAuth ? useGetUserById(userId) : {};
   return (
-    <Flex align="center" gap="5">
+    <Flex align="center" gap={{ initial: "1", md: "5" }}>
       <Button variant="outline" onClick={() => setUsername("")}>
         🌎 Latest Posts
       </Button>
@@ -24,7 +24,7 @@ const PostManage = () => {
           <Separator orientation="vertical" size="2" />
           <Link to={`/new/${userId}`}>
             <Button variant="outline" color="yellow">
-              Make a Post 🚀
+              <span className="hidden sm:inline">Make a Post</span> 🚀
             </Button>
           </Link>
         </>

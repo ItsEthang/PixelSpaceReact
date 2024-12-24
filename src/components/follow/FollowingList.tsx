@@ -18,7 +18,7 @@ const FollowingList = () => {
 
       <Flex direction="column" align="center" className="w-full px-3" gap="4">
         <Heading as="h3" mt="4">
-          Your Following
+          Your Followings
         </Heading>
         <Separator orientation="horizontal" size="4" />
 

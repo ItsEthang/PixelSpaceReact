@@ -34,7 +34,7 @@ const ProfilePage = () => {
     );
   }
   return (
-    <Container mt="8">
+    <Container my="8">
       <Flex direction="column" align="center" gap="5">
         <Avatar
           size="8"
@@ -57,8 +57,8 @@ const ProfilePage = () => {
           </Text>
         </Box>
         <Text
-          className="max-h-96 w-full overflow-scroll border-double border-2 border-white p-5 prose dark:prose-invert"
-          as="p"
+          className="max-h-96 w-full overflow-scroll border-solid border-2 border-slate-500 p-5 prose dark:prose-invert"
+          as="div"
         >
           <ReactMarkdown>{profile.bio}</ReactMarkdown>
         </Text>
