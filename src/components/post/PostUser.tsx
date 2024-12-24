@@ -4,15 +4,19 @@ import { UserInfo } from "../../interfaces/Entity";
 import FollowBtn from "../buttons/FollowBtn";
 import useUserStore from "../user/store";
 import placeholder from "../../assets/placeholder-profile.webp";
+import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
+import useAuthUserId from "../../hooks/useAuthUserId";
 
 interface Props {
   user: UserInfo;
 }
 
 const PostUser = ({ user }: Props) => {
-  const { isLoggedIn, userId } = useUserStore();
+  const { isLoggedIn } = useUserStore();
   const profileImg = user.profileImg ? user.profileImg : placeholder;
   const fallback = user.name ? user.name.charAt(0) : "X";
+  const isAuth = useIsAuthenticated();
+  const userId = useAuthUserId();
   return (
     <Flex gap="3" align="center">
       <Link to={`/profile/${user?.userId}`}>
@@ -28,7 +32,7 @@ const PostUser = ({ user }: Props) => {
           </Box>
         </Flex>
       </Link>
-      {isLoggedIn && userId && (
+      {isAuth && userId && (
         <FollowBtn user1Id={userId} user2Id={user?.userId} />
       )}
     </Flex>

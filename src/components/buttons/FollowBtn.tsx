@@ -5,7 +5,7 @@ import useGetFollowing from "../../hooks/useGetFollowing";
 import apiClient from "../../services/api-client";
 
 interface Props {
-  user1Id: number;
+  user1Id: string;
   user2Id: number | undefined;
 }
 
