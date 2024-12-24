@@ -6,9 +6,13 @@ import PostActions from "./PostActions";
 import PostContent from "./PostContent";
 import PostUser from "./PostUser";
 import { Link } from "react-router-dom";
+import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
+import useAuthUserId from "../../hooks/useAuthUserId";
 
 const PostCard = ({ post }: { post: Post }) => {
-  const { isLoggedIn, userId } = useUserStore();
+  const { isLoggedIn } = useUserStore();
+  const isAuth = useIsAuthenticated();
+  const userId = useAuthUserId();
   const { data: user, error } = usePostGetUser(post.postId);
 
   if (!user || error) {
@@ -21,9 +25,7 @@ const PostCard = ({ post }: { post: Post }) => {
         <Link to={`/post/${post.postId}`}>
           <PostContent post={post} />
         </Link>
-        {isLoggedIn && (
-          <PostActions postId={post.postId} userId={userId + ""} />
-        )}
+        {isAuth && <PostActions postId={post.postId} userId={userId} />}
       </Box>
     </Card>
   );
