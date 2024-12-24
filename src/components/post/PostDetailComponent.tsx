@@ -30,7 +30,7 @@ const PostDetailComponent = ({ postId }: Props) => {
         <Heading as="h2">{postDetail.title}</Heading>
         <Text
           as="div"
-          className="h-3/4 bg-zinc-900/50 my-7 p-8 overflow-scroll prose dark:prose-invert"
+          className="max-h-[300px] lg:max-h-[500px] w-full bg-zinc-900/50 my-7 p-8 overflow-scroll prose dark:prose-invert"
         >
           <ReactMarkdown>{postDetail.content}</ReactMarkdown>
         </Text>

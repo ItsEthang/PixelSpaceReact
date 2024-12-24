@@ -1,10 +1,8 @@
 import { Flex } from "@radix-ui/themes";
-import useGiveLike from "../../hooks/useGiveLike";
-import useGiveUnlike from "../../hooks/useGiveUnlike";
-import CommentBtn from "../buttons/CommentBtn";
-import LikeBtn from "../buttons/LikeBtn";
 import useGetLikeByUserAndPost from "../../hooks/useGetLikeByUserAndPost";
 import useGetPostLikeCount from "../../hooks/useGetPostLikeCount";
+import CommentBtn from "../buttons/CommentBtn";
+import LikeBtn from "../buttons/LikeBtn";
 
 interface Props {
   postId: number;
