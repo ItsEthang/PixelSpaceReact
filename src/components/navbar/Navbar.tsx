@@ -15,13 +15,10 @@ const Navbar = () => {
     <nav className="border-b-2 mb-5 p-4 md:px-8 bg-zinc-800">
       <Flex justify="between" align="center">
         <Logo />
-        {isAuth && (
-          <>
-            <Discover />
-          </>
-        )}
+        <Discover />
+
         <div
-          className={`hidden md:flex w-5/6 ${
+          className={`hidden md:flex w-1/2 lg:w-4/6 ${
             isAuth ? "justify-between" : "justify-end"
           } items-center`}
         >

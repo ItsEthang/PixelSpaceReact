@@ -61,7 +61,7 @@ const Discover = () => {
         <Flex direction="column" align="center" gap="2">
           {username &&
             users?.map((user) => (
-              <Card>
+              <Card className="w-[240px] md:w-[285px]">
                 <PostUser user={user} />
               </Card>
             ))}
