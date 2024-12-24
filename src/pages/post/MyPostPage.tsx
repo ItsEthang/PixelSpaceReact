@@ -1,10 +1,10 @@
 import { Box, Button, Flex, Heading, Separator } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
 import AllPost from "../../components/post/AllPost";
-import useUserStore from "../../components/user/store";
+import useAuthUserId from "../../hooks/useAuthUserId";
 
 const MyPostPage = () => {
-  const { userId } = useUserStore();
+  const userId = useAuthUserId();
   if (!userId) {
     return <Heading>Please login to see your posts.</Heading>;
   }
@@ -25,7 +25,7 @@ const MyPostPage = () => {
           <Separator size="4" orientation="horizontal" />
         </Box>
       </Flex>
-      <AllPost userId={userId + ""} />
+      <AllPost />
     </>
   );
 };
