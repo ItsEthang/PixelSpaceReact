@@ -3,6 +3,8 @@ import { create } from "zustand";
 interface UserStore {
   isLoggedIn: boolean;
   login: (userId: number) => void;
+  username: string;
+  setUsername: (username: string) => void;
 }
 
 const useUserStore = create<UserStore>((set) => ({
@@ -10,6 +12,11 @@ const useUserStore = create<UserStore>((set) => ({
   login: () =>
     set((store) => ({
       isLoggedIn: !store.isLoggedIn,
+    })),
+  username: "",
+  setUsername: (username) =>
+    set(() => ({
+      username,
     })),
 }));
 
