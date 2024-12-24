@@ -25,7 +25,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <Theme appearance="dark" accentColor="plum" grayColor="slate">
         <AuthProvider store={store}>
           <RouterProvider router={router} />
-          {/* <ReactQueryDevtools /> */}
+          <ReactQueryDevtools />
         </AuthProvider>
       </Theme>
     </QueryClientProvider>
