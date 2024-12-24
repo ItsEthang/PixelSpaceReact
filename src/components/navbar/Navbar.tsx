@@ -9,6 +9,7 @@ import Logo from "./Logo";
 import Navigation from "./Navigation";
 import UserAvatar from "./UserAvatar";
 import useUserStore from "../user/store";
+import Discover from "./Discover";
 
 const Navbar = () => {
   const { isLoggedIn } = useUserStore();
@@ -21,7 +22,7 @@ const Navbar = () => {
         <Logo />
         {isAuth && (
           <>
-            <UserAvatar userId={userId} />
+            <Discover />
           </>
         )}
         <div
