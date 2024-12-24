@@ -19,7 +19,7 @@ const PostCard = ({ post }: { post: Post }) => {
     return null;
   }
   return (
-    <Card className="w-4/5">
+    <Card className="w-11/12 md:w-4/5">
       <Box px="3" py="1">
         <PostUser user={user} />
         <Link to={`/post/${post.postId}`}>
