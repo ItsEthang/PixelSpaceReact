@@ -21,12 +21,29 @@ const PostUser = ({ user }: Props) => {
     <Flex gap="3" align="center">
       <Link to={`/profile/${user?.userId}`}>
         <Flex gap="3" align="center">
-          <Avatar size="3" src={profileImg} radius="full" fallback={fallback} />
+          <div className="hidden sm:block">
+            <Avatar
+              size="3"
+              src={profileImg}
+              radius="full"
+              fallback={fallback}
+            />
+          </div>
           <Box>
-            <Text as="div" size="2" weight="bold">
+            <Text
+              as="p"
+              size="2"
+              weight="bold"
+              className="truncate max-w-[100px] lg:max-w-[200px]"
+            >
               {user.name}
             </Text>
-            <Text as="div" size="1" color="gray">
+            <Text
+              as="p"
+              size="1"
+              color="gray"
+              className="truncate max-w-[100px] lg:max-w-[200px]"
+            >
               @{user.username}
             </Text>
           </Box>
