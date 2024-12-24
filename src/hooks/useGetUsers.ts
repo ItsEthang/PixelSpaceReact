@@ -13,11 +13,14 @@ const useGetUsers = () => {
     }
     const queryString = params.toString();
 
-    const res = await apiClient.get<UserInfo[]>(
-      `/user/all${queryString ? "?" + queryString : ""}`
-    );
+    if (queryString) {
+      const res = await apiClient.get<UserInfo[]>(
+        `/user/all${queryString ? "?" + queryString : ""}`
+      );
 
-    return res.data;
+      return res.data;
+    }
+    return [];
   };
   return useQuery<UserInfo[], Error>({
     queryKey: ["users", username],
