@@ -20,7 +20,11 @@ const PostUser = ({ user }: Props) => {
   return (
     <Flex gap="3" align="center">
       <Link to={`/profile/${user?.userId}`}>
-        <Flex gap="3" align="center">
+        <Flex
+          gap="3"
+          align="center"
+          className="w-[140px] md:w-[180px] truncate"
+        >
           <div className="hidden sm:block">
             <Avatar
               size="3"
@@ -34,7 +38,7 @@ const PostUser = ({ user }: Props) => {
               as="p"
               size="2"
               weight="bold"
-              className="truncate max-w-[100px] lg:max-w-[200px]"
+              className="truncate max-w-[100px] lg:max-w-[140px]"
             >
               {user.name}
             </Text>
@@ -42,7 +46,7 @@ const PostUser = ({ user }: Props) => {
               as="p"
               size="1"
               color="gray"
-              className="truncate max-w-[100px] lg:max-w-[200px]"
+              className="truncate max-w-[100px] lg:max-w-[150px]"
             >
               @{user.username}
             </Text>
