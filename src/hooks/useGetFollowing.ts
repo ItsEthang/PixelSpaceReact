@@ -3,7 +3,7 @@ import apiClient from "../services/api-client";
 import { UserInfo } from "../interfaces/Entity";
 import ms from "ms";
 
-const useGetFollowing = (userId: number) => {
+const useGetFollowing = (userId: string) => {
   const getFollowing = async () => {
     const res = await apiClient.get<UserInfo[]>(`/user/following`, {
       headers: {

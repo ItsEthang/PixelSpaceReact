@@ -8,7 +8,7 @@ const SearchField = () => {
   const { postQuery, setTitle } = usePostQueryStore();
   const ref = useRef<HTMLInputElement>(null);
   return (
-    <Flex align="center" gap="4">
+    <Flex align="center" justify="start" className="w-4/5">
       <form
         onSubmit={(e) => {
           e.preventDefault();

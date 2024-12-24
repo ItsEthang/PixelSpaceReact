@@ -7,7 +7,7 @@ const UserAvatar = ({ userId }: { userId: string }) => {
     <Avatar
       src={user?.profileImg}
       fallback={user ? user.name.charAt(0) : ""}
-      size="2"
+      size="1"
     />
   );
 };

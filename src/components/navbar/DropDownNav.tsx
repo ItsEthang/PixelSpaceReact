@@ -3,9 +3,13 @@ import { Link } from "react-router-dom";
 import useUserStore from "../user/store";
 import Logout from "../buttons/Logout";
 import Login from "../buttons/Login";
+import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
+import useAuthUserId from "../../hooks/useAuthUserId";
 
 const DropDownNav = () => {
-  const { isLoggedIn, userId, logout } = useUserStore();
+  const { isLoggedIn } = useUserStore();
+  const isAuth = useIsAuthenticated();
+  const userId = useAuthUserId();
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
@@ -25,9 +29,7 @@ const DropDownNav = () => {
           <Link to={`/followings/${userId}`}>Followings</Link>
         </DropdownMenu.Item>
         <DropdownMenu.Separator />
-        <DropdownMenu.Item>
-          {isLoggedIn ? <Logout logout={logout} /> : <Login />}
-        </DropdownMenu.Item>
+        <DropdownMenu.Item>{isAuth ? <Logout /> : <Login />}</DropdownMenu.Item>
       </DropdownMenu.Content>
     </DropdownMenu.Root>
   );

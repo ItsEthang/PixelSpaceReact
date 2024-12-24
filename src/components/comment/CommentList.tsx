@@ -19,7 +19,7 @@ const CommentList = ({ postId }: { postId: string }) => {
         </Heading>
         <Separator orientation="horizontal" size="4" />
 
-        <ul className="list-none px-5 max-h-full overflow-scroll">
+        <ul className="list-none px-5 max-h-[300px] lg:max-h-full overflow-scroll">
           {comments.map((comment) => (
             <CommentCard comment={comment} key={comment.commentId} />
           ))}

@@ -1,32 +1,30 @@
 import { Flex } from "@radix-ui/themes";
+import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 import Login from "../buttons/Login";
 import Logout from "../buttons/Logout";
 import useUserStore from "../user/store";
+import Discover from "./Discover";
 import DropDownNav from "./DropDownNav";
 import Logo from "./Logo";
 import Navigation from "./Navigation";
-import UserAvatar from "./UserAvatar";
 
 const Navbar = () => {
-  const { isLoggedIn, logout, userId } = useUserStore();
-
+  const { isLoggedIn } = useUserStore();
+  const isAuth = useIsAuthenticated();
   return (
     <nav className="border-b-2 mb-5 p-4 md:px-8 bg-zinc-800">
       <Flex justify="between" align="center">
         <Logo />
-        {isLoggedIn && (
-          <>
-            <UserAvatar userId={userId + ""} />
-          </>
-        )}
+        <Discover />
+
         <div
-          className={`hidden md:flex w-5/6 ${
-            isLoggedIn ? "justify-between" : "justify-end"
+          className={`hidden md:flex w-1/2 lg:w-4/6 ${
+            isAuth ? "justify-between" : "justify-end"
           } items-center`}
         >
-          {isLoggedIn && <Navigation />}
+          {isAuth && <Navigation />}
 
-          {isLoggedIn ? <Logout logout={logout} /> : <Login />}
+          {isAuth ? <Logout /> : <Login />}
         </div>
         <div className="block md:hidden">
           <DropDownNav />

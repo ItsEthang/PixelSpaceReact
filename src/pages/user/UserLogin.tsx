@@ -9,10 +9,16 @@ import useUserStore from "../../components/user/store";
 import { AuthInput } from "../../interfaces/AuthInput";
 import apiClient from "../../services/api-client";
 import LinkText from "../../components/LinkText";
+import useSignIn from "react-auth-kit/hooks/useSignIn";
+
+interface TokenResponse {
+  token: string;
+}
 
 const UserLogin = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
+  const signIn = useSignIn();
   const [isSubmitting, setSubmitting] = useState(false);
   const { login } = useUserStore();
   const {
@@ -23,8 +29,18 @@ const UserLogin = () => {
   const onSubmit: SubmitHandler<AuthInput> = async (data) => {
     try {
       setSubmitting(true);
-      const response = await apiClient.post("/user/login", data);
+      const response = await apiClient.post<TokenResponse>("/user/login", data);
       login(response.headers["userid"]);
+      signIn({
+        auth: {
+          token: response.data.token,
+          type: "Bearer",
+        },
+        userState: {
+          username: data.username,
+          uid: response.headers["userid"],
+        },
+      });
       navigate("/");
     } catch (error) {
       setError("Due to an error. You cannot login at this time");

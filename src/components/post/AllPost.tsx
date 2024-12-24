@@ -12,7 +12,6 @@ const AllPost = () => {
   return (
     <Flex direction="column" justify="center" align="center" gap="4">
       <PostManage />
-
       <Separator size="4" orientation="horizontal" />
       <SearchField />
       {posts?.map((post) => (

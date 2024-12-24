@@ -1,15 +1,18 @@
 import { TabNav } from "@radix-ui/themes";
 import { Link, useLocation } from "react-router-dom";
-import useUserStore from "../user/store";
+import useAuthUserId from "../../hooks/useAuthUserId";
+import UserAvatar from "./UserAvatar";
 
 const Navigation = () => {
-  const { userId } = useUserStore();
+  const userId = useAuthUserId();
   const location = useLocation();
 
   return (
     <TabNav.Root>
       <TabNav.Link active={location.pathname === `/profile/${userId}`}>
-        <Link to={`/profile/${userId}`}>Profile</Link>
+        <Link to={`/profile/${userId}`}>
+          <UserAvatar userId={userId} />
+        </Link>
       </TabNav.Link>
       <TabNav.Link active={location.pathname === `/followers/${userId}`}>
         <Link to={`/followers/${userId}`}>Followers</Link>

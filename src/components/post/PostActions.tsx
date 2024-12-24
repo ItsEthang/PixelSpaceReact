@@ -1,6 +1,6 @@
 import { Flex } from "@radix-ui/themes";
-import useGiveLike from "../../hooks/useGiveLike";
-import useGiveUnlike from "../../hooks/useGiveUnlike";
+import useGetLikeByUserAndPost from "../../hooks/useGetLikeByUserAndPost";
+import useGetPostLikeCount from "../../hooks/useGetPostLikeCount";
 import CommentBtn from "../buttons/CommentBtn";
 import LikeBtn from "../buttons/LikeBtn";
 
@@ -10,20 +10,20 @@ interface Props {
 }
 
 const PostActions = ({ postId, userId }: Props) => {
-  const handleLikeClick = () => {
-    useGiveLike(postId, userId);
-  };
-  const handleUnlikeClick = () => {
-    useGiveUnlike(postId, userId);
-  };
+  const { data: isLikedByLogIn } = useGetLikeByUserAndPost(postId + "", userId);
+  const { data: likeCtn } = useGetPostLikeCount(postId + "");
+  const validLike =
+    typeof isLikedByLogIn === "boolean" && typeof likeCtn === "number";
   return (
     <Flex justify="end" align="center" gap="7">
-      <LikeBtn
-        giveLike={handleLikeClick}
-        giveUnlike={handleUnlikeClick}
-        postId={postId + ""}
-        userId={userId}
-      />
+      {validLike && (
+        <LikeBtn
+          isLikedByAuthUser={isLikedByLogIn}
+          likeCtn={likeCtn}
+          postId={postId + ""}
+          userId={userId}
+        />
+      )}
 
       <CommentBtn postId={postId} userId={userId} />
     </Flex>

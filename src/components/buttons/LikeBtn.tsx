@@ -1,53 +1,40 @@
 import { Button, Text } from "@radix-ui/themes";
-import { useEffect, useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 import { BiLike, BiSolidLike } from "react-icons/bi";
-import useGetLikeByUserAndPost from "../../hooks/useGetLikeByUserAndPost";
-import useGetPostLikeCount from "../../hooks/useGetPostLikeCount";
+import useGiveLike from "../../hooks/useGiveLike";
+import useGiveUnlike from "../../hooks/useGiveUnlike";
+import { useState } from "react";
 
 interface Props {
-  giveLike: () => void;
-  giveUnlike: () => void;
+  isLikedByAuthUser: boolean;
+  likeCtn: number;
   postId: string;
   userId: string;
 }
 
-const LikeBtn = ({ giveLike, giveUnlike, postId, userId }: Props) => {
-  const { data: isLikedByLogIn, error: likeError } = useGetLikeByUserAndPost(
-    postId,
-    userId
-  );
-  const { data: likeCtn } = useGetPostLikeCount(postId);
+const LikeBtn = ({ isLikedByAuthUser, likeCtn, postId, userId }: Props) => {
+  const queryClient = useQueryClient();
+  queryClient.invalidateQueries([userId, "like", postId]);
+  queryClient.invalidateQueries(["post", postId, "like"]);
 
-  const [liked, setLiked] = useState<boolean>(false);
-  const [likeCount, setLikeCount] = useState<number>(0);
-
-  useEffect(() => {
-    if (isLikedByLogIn !== undefined && !likeError) {
-      setLiked(isLikedByLogIn);
-    }
-    if (likeCtn !== undefined) {
-      setLikeCount(likeCtn);
-    }
-  }, [isLikedByLogIn, likeCtn, likeError]);
+  const [isLiked, setIsLiked] = useState(isLikedByAuthUser);
+  const [likeCount, setLikeCtn] = useState(likeCtn);
 
   const handleClick = () => {
-    if (!liked) {
-      giveLike();
-      setLiked(true);
-      setLikeCount(likeCount + 1);
+    if (!isLiked) {
+      useGiveLike(+postId, userId);
+      setIsLiked(true);
+      setLikeCtn(likeCount + 1);
     } else {
-      giveUnlike();
-      setLiked(false);
-      setLikeCount(likeCount - 1);
+      useGiveUnlike(+postId, userId);
+      setIsLiked(false);
+      setLikeCtn(likeCount - 1);
     }
   };
 
-  if (likeError || isLikedByLogIn === undefined) {
-    return null;
-  }
   return (
     <Button onClick={handleClick} variant="ghost" size="4">
-      {liked ? <BiSolidLike /> : <BiLike />} <Text>{likeCount}</Text>
+      {isLiked ? <BiSolidLike /> : <BiLike />} <Text>{likeCount}</Text>
     </Button>
   );
 };

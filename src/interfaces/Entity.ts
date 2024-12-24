@@ -27,3 +27,8 @@ export interface UserProfile {
   profileImg: string;
   bio: string;
 }
+
+export interface AuthUser {
+  username: string;
+  uid: number;
+}
