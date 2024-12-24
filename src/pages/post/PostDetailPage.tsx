@@ -8,7 +8,7 @@ const PostDetailPage = () => {
 
   return (
     <Flex justify="center">
-      <div className="grid grid-cols-6 w-5/6 h-fit  p-3 lg:p-8 bg-zinc-800 gap-4">
+      <div className="grid grid-cols-6 w-5/6 h-fit max-h-[1000px] p-3 lg:p-8 bg-zinc-800 gap-4">
         <div className="col-span-6 lg:col-span-4">
           <PostDetailComponent postId={postId!} />
         </div>
