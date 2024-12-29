@@ -10,7 +10,7 @@ import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 import useAuthUserId from "../../hooks/useAuthUserId";
 
 const PostCard = ({ post }: { post: Post }) => {
-  const { isLoggedIn } = useUserStore();
+  const { isLoggedIn: _isLoggedIn } = useUserStore();
   const isAuth = useIsAuthenticated();
   const userId = useAuthUserId();
   const { data: user, error } = usePostGetUser(post.postId);

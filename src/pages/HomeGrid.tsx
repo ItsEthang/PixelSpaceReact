@@ -4,7 +4,7 @@ import AllPost from "../components/post/AllPost";
 import useUserStore from "../components/user/store";
 
 const HomeGrid = () => {
-  const { isLoggedIn } = useUserStore();
+  const { isLoggedIn: _isLoggedIn } = useUserStore();
   const isAuth = useIsAuthenticated();
   return (
     <div className="grid grid-cols-5">

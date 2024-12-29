@@ -12,7 +12,7 @@ interface Props {
 }
 
 const PostUser = ({ user }: Props) => {
-  const { isLoggedIn } = useUserStore();
+  const { isLoggedIn: _isLoggedIn } = useUserStore();
   const profileImg = user.profileImg ? user.profileImg : placeholder;
   const fallback = user.name ? user.name.charAt(0) : "X";
   const isAuth = useIsAuthenticated();

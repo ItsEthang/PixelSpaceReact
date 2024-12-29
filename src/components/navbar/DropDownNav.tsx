@@ -7,7 +7,7 @@ import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 import useAuthUserId from "../../hooks/useAuthUserId";
 
 const DropDownNav = () => {
-  const { isLoggedIn } = useUserStore();
+  const { isLoggedIn: _isLoggedIn } = useUserStore();
   const isAuth = useIsAuthenticated();
   const userId = useAuthUserId();
   return (

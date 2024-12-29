@@ -25,7 +25,7 @@ const CommentBtn = ({ postId, userId }: Props) => {
   } = useForm<CommentInput>();
   const onSubmit: SubmitHandler<CommentInput> = async (data) => {
     try {
-      const response = await useMakeComment(postId, userId, data.content);
+      await useMakeComment(postId, userId, data.content);
       setSubmitting(true);
     } catch (error) {
       setError("Due to an error. You launch a comment at this time");

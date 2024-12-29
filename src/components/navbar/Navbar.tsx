@@ -9,7 +9,7 @@ import Logo from "./Logo";
 import Navigation from "./Navigation";
 
 const Navbar = () => {
-  const { isLoggedIn } = useUserStore();
+  const { isLoggedIn: _isLoggedIn } = useUserStore();
   const isAuth = useIsAuthenticated();
   return (
     <nav className="border-b-2 mb-5 p-4 md:px-8 bg-zinc-800">

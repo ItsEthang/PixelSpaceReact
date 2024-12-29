@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const FollowButtons = ({ userId }: { userId: number }) => {
   const { data: followers } = useGetFollower(userId);
-  const { data: followings } = useGetFollowing(userId);
+  const { data: followings } = useGetFollowing(userId + "");
   const followersCtn = followers ? followers.length : 0;
   const followingsCtn = followings ? followings.length : 0;
   return (

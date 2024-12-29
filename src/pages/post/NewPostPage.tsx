@@ -35,7 +35,7 @@ const NewPostPage = () => {
   const onSubmit: SubmitHandler<PostInput> = async (data) => {
     try {
       setSubmitting(true);
-      const response = await apiClient.post(
+      await apiClient.post(
         "/user/post",
         {
           post: {

@@ -6,7 +6,7 @@ import useAuthUser from "react-auth-kit/hooks/useAuthUser";
 import { AuthUser } from "../../interfaces/Entity";
 
 const FollowingList = () => {
-  const { isLoggedIn } = useUserStore();
+  const { isLoggedIn: _isLoggedIn } = useUserStore();
   const authUser = useAuthUser<AuthUser>();
   const uid = authUser ? authUser.uid + "" : "";
 
