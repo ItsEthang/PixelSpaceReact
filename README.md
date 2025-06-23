@@ -27,4 +27,4 @@ If you are developing a production application, we recommend updating the config
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 
 ## Screenshots
-![Home page](images/RockITHome.png)
+![Home page](https://github.com/ItsEthang/PixelSpaceReact/blob/c80861be73122e9e4eda63af0e4b8e3dc851f1b1/images/RockITHome.PNG)
